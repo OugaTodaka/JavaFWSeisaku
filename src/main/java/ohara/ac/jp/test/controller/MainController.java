@@ -25,7 +25,7 @@ public class MainController {
 	@Autowired
 	private SchoolService schoolService;
 
-	@RequestMapping("/")
+	@RequestMapping("/student")
 	public ModelAndView student(ModelAndView model){
 		model.setViewName("student");
 		List<Student>student = studentService.searchAll();
@@ -51,7 +51,8 @@ public class MainController {
 			stu.setIs_attend(true);
 			stu.setSchool_cd(stu.getSchool_cd());
 			studentService.insert(stu);
-			return "redirect:/";
+			System.out.println("登録："+stu);
+			return "redirect:/student";
 		}catch(DataIntegrityViolationException e){
 			return "addError";
 		}
@@ -73,9 +74,9 @@ public class MainController {
 		stu.setName(form.getName());
 		stu.setClass_num(form.getClass_num());
 		stu.setSchool_cd(form.getSchool_cd());
-		System.out.println(stu);
 		studentService.update(stu);
-		return "redirect:/";
+		System.out.println("更新："+stu);
+		return "redirect:/student";
 	}
 	
 	@GetMapping("/delete/{id}")
@@ -89,7 +90,8 @@ public class MainController {
 		Student stu = studentService.get(id);
 		stu.setIs_attend(false);
 		studentService.update(stu);
-		return "redirect:/";
+		System.out.println("削除："+stu);
+		return "redirect:/student";
 	}
 
 }

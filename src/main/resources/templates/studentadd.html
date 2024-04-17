@@ -8,7 +8,7 @@
 <h1>生徒追加</h1>
 <form th:action="@{/studentadd}" method="post">
 	<p><input type="text" name="no" maxlength="7" pattern="^[0-9]+$" placeholder="学籍番号（数字７桁）" required/></p>
-	<p><input type="text" name="name" placeholder="氏　名"/></p>
+	<p><input type="text" name="name" maxlength="10" placeholder="氏　名"/></p>
 
 	<p>
 		<select name="ent_year" required>
@@ -21,7 +21,7 @@
 		</select>
 	</p>
 
-	<p><input type="text" name="class_num"　maxlength="3" pattern="^[0-9]+$" placeholder="クラス（数字３桁）"/></p>
+	<p><input type="text" name="class_num" maxlength="3" pattern="^[0-9]+$" placeholder="クラス（数字３桁）"/></p>
 	<p>
 		<select name="school_cd" required>
 		<option value="">所属学校を選択</option>

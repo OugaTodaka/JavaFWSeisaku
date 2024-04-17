@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>o-hara</title>
+</head>
+<body>
+
+<h1>StudentList</h1>
+<a href="/studentadd">生徒追加</a>
+<table border="2">
+	<thead>
+		<tr>
+			<th>学生番号</th>
+			<th>名前</th>
+			<th>入学年度</th>
+			<th>クラス</th>
+			<th>学校</th>
+			<th colspan="2">編集</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="student:${student}" th:if="${student.is_attend}" style="text-align:center;">
+			<td th:text="${student.no}"></td>
+			<td th:text="${student.name}"></td>
+			<td th:text="${student.ent_year}"></td>
+			<td th:text="${student.class_num}"></td>
+			<td th:text="${student.school.name}"></td>
+			<td><a th:href="@{/edit/{id}(id=${student.id})}">こうしん</a></td>
+			<td><a th:href="@{/delete/{id}(id=${student.id})}">削除</a></td>
+		</tr>
+	</tbody>
+</table>
+
+</body>
+</html>

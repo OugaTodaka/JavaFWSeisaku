@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>更新</title>
+</head>
+<body>
+<h1>データ更新</h1>
+<form th:object="${stu}" th:action="'/edit/'+${id}" method="post">
+	<p>学生番号：<input type="text" name="no" th:value="${stu.no}" disabled></p>
+	<p>氏　　名：<input type="text" name="name" th:value="${stu.name}"></p>
+	<p>入学年度：<input type="text" name="ent_year" th:value="${stu.ent_year}" disabled></p>
+	<p>ク ラ ス：<input type="text" name="class_num" maxlength="3" pattern="^[0-9]+$" placeholder="クラス（数字３桁）" th:value="${stu.class_num}"></p>
+	<p>所属学校：
+		<select name="school_cd" required>
+		<option th:value="${stu.school_cd}">変更なし</option>
+		<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
+		</select>
+	</p>
+	<input type="submit" value="更新">
+</form>
+</body>
+</html>

@@ -27,21 +27,17 @@ public class Subject implements Serializable{
 
 	@Column(name = "SCHOOL_CD")
 	private String school_cd;
-
-//	@NotBlank
-//	@Column(name = "SCHOOL_CD")
-//	@Size(min=7, max=7)
-//	private String schoolCd;
+	
+	@ManyToOne()
+	@JoinColumn(name="school_cd",referencedColumnName="cd",insertable=false,updatable=false)
+	private School school;
 
 	@Column(name = "CD")
 	private String cd;
 
 	@Column(name = "NAME")
-	private Integer name;
-	
-	@ManyToOne()
-	@JoinColumn(name="school_cd",referencedColumnName="cd",insertable=false,updatable=false)
-	private School school;
+	private String name;
+
 
 
 }

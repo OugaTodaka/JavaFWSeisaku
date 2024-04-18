@@ -2,8 +2,6 @@ package ohara.ac.jp.test.controller;
 
 import java.util.List;
 
-import javax.security.auth.Subject;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -16,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ohara.ac.jp.test.model.School;
 import ohara.ac.jp.test.model.Student;
+import ohara.ac.jp.test.model.Subject;
 import ohara.ac.jp.test.service.SchoolService;
 import ohara.ac.jp.test.service.StudentService;
 import ohara.ac.jp.test.service.SubjectService;
@@ -42,7 +41,7 @@ public class MainController {
 	@RequestMapping("/subject")
 	public ModelAndView subject(ModelAndView model){
 		model.setViewName("subject");
-		List<Subject>subject =subjectService.searchAll();
+		List<Subject>subject = subjectService.searchAll();
 		model.addObject("subject",subject);
 		return model;
 	}

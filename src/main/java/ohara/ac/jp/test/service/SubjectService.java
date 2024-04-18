@@ -5,9 +5,13 @@ import java.util.List;
 import javax.security.auth.Subject;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
 import ohara.ac.jp.test.repository.SubjectRepository;
 
+@Service
+@Transactional
 public class SubjectService {
 	@Autowired
 	private SubjectRepository subjectRepository;

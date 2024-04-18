@@ -39,7 +39,7 @@ public class MainController {
 	
 	@RequestMapping("/subject")
 	public ModelAndView subject(ModelAndView model){
-		model.setViewName("student");
+		model.setViewName("subject");
 		List<Student>subject =subjectService.searchAll();
 		model.addObject("aubject",subject);
 		return model;

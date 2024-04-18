@@ -5,7 +5,13 @@
 <title>削除</title>
 </head>
 <body>
-<form th:action="'/student/delete/'+${id}" method="post">
+<form th:object="${stu}" th:action="'/student/delete/'+${id}" method="post">
+	<section>学生番号：<p th:text=${stu.no}></p></section>
+	<section>氏　　名：<p th:text=${stu.name}></p></section>
+	<section>入学年度：<p th:text=${stu.ent_year}></p></section>
+	<section>ク ラ ス：<p th:text=${stu.class_num}></p></section>
+	<section>所属学校：<p th:text=${stu.school.name}></p></section>
+	<p>このデータを削除しますか？</p>
 	<input type="submit" value="削除">
 </form>
 	<a href="/student">戻る</a>

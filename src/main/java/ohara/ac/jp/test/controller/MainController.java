@@ -96,6 +96,10 @@ public class MainController {
 	@GetMapping("student/delete/{id}")
 	public ModelAndView studentDelete(@PathVariable(name="id")Long id,ModelAndView mav) {
 		mav.setViewName("studentdelete");
+		Student stu = studentService.get(id);
+		List<School>list = schoolService.searchAll();
+		mav.addObject("school",list);
+		mav.addObject("stu",stu);
 		return mav;
 	}
 	

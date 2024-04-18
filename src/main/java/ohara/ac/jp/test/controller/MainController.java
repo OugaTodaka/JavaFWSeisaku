@@ -47,7 +47,7 @@ public class MainController {
 	}
 
 	
-	@GetMapping("/studentadd")
+	@GetMapping("/student/add")
 	public ModelAndView studentAdd(@ModelAttribute Student stu,ModelAndView model) {
 		model.setViewName("studentadd");
 		List<School>list = schoolService.searchAll();
@@ -55,7 +55,7 @@ public class MainController {
 		return model;
 	}
 
-	@PostMapping("/studentadd")
+	@PostMapping("/student/add")
 	public String studentAddRun(@ModelAttribute Student stu,ModelAndView mav) {
 		try {
 			stu.setNo(stu.getNo());
@@ -72,9 +72,9 @@ public class MainController {
 		}
 	}
 	
-	@GetMapping("/edit/{id}")
+	@GetMapping("student/edit/{id}")
 	public ModelAndView studentEdit(@PathVariable(name="id")Long id,ModelAndView mav) {
-		mav.setViewName("edit");
+		mav.setViewName("studentedit");
 		Student stu = studentService.get(id);
 		List<School>list = schoolService.searchAll();
 		mav.addObject("school",list);
@@ -82,7 +82,7 @@ public class MainController {
 		return mav;
 	}
 	
-	@PostMapping("/edit/{id}")
+	@PostMapping("student/edit/{id}")
 	public String studentEditRun(@PathVariable(name="id")Long id,@ModelAttribute Student form) {
 		Student stu = studentService.get(id);
 		stu.setName(form.getName());
@@ -93,13 +93,13 @@ public class MainController {
 		return "redirect:/student";
 	}
 	
-	@GetMapping("/delete/{id}")
+	@GetMapping("student/delete/{id}")
 	public ModelAndView studentDelete(@PathVariable(name="id")Long id,ModelAndView mav) {
-		mav.setViewName("delete");
+		mav.setViewName("studentdelete");
 		return mav;
 	}
 	
-	@PostMapping("/delete/{id}")
+	@PostMapping("student/delete/{id}")
 	public String studentDeleteRun(@PathVariable(name="id")Long id) {
 		Student stu = studentService.get(id);
 		stu.setIs_attend(false);

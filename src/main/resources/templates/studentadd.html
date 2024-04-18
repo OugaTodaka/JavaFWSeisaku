@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>生徒追加</h1>
-<form th:action="@{/studentadd}" method="post">
+<form th:action="@{/student/add}" method="post">
 	<p><input type="text" name="no" maxlength="7" pattern="^[0-9]+$" placeholder="学籍番号（数字７桁）" required/></p>
 	<p><input type="text" name="name" maxlength="10" placeholder="氏　名"/></p>
 

@@ -10,18 +10,19 @@
 <table border="2">
 	<thead>
 		<tr>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
+			<th>科目コード</th>
+			<th>学校名</th>
+			<th>科目名</th>
+			<th colspan="2">編集</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr th:each="subject:${subject}">
-			<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
+			<th th:text="${subject.cd}"></th>
+			<th th:text="${subject.school.name}"></th>
+			<th th:text="${subject.name}"></th>
+			<th><a href="">更新</a></th>
+			<th><a href="">削除</a></th>
 		</tr>
 	</tbody>
 </table>

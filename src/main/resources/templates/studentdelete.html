@@ -6,14 +6,31 @@
 </head>
 <body>
 <form th:object="${stu}" th:action="'/student/delete/'+${id}" method="post">
-	<section>学生番号：<p th:text=${stu.no}></p></section>
-	<section>氏　　名：<p th:text=${stu.name}></p></section>
-	<section>入学年度：<p th:text=${stu.ent_year}></p></section>
-	<section>ク ラ ス：<p th:text=${stu.class_num}></p></section>
-	<section>所属学校：<p th:text=${stu.school.name}></p></section>
+	<table>
+		<tr>
+			<td>学生番号：</td>
+			<td　th:text="${stu.no}"></td>
+		</tr>
+		<tr>
+			<td>氏　　名：</td>
+			<td　th:text="${stu.name}"></td>
+		</tr>
+		<tr>
+			<td>入学年度：</td>
+			<td　th:text="${stu.ent_year}"></td>
+		</tr>
+		<tr>
+			<td>ク ラ ス：</td>
+			<td　th:text="${stu.class_num}"></td>
+		</tr>
+		<tr>
+			<td>所属学校：</td>
+			<td　th:text="${stu.school.name}"></td>
+		</tr>
+	</table>
 	<p>このデータを削除しますか？</p>
-	<input type="submit" value="削除">
+	<input type="submit" value="削除">	<a href="/student">戻る</a>
 </form>
-	<a href="/student">戻る</a>
+
 </body>
 </html>

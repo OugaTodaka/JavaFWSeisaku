@@ -8,6 +8,7 @@
 
 <h1>StudentList</h1>
 <a href="/student/add">生徒追加</a>
+<a href="/">ホーム</a>
 <table border="2">
 	<thead>
 		<tr>
@@ -26,8 +27,8 @@
 			<td th:text="${student.ent_year}"></td>
 			<td th:text="${student.class_num}"></td>
 			<td th:text="${student.school.name}"></td>
-			<td><a th:href="@{student/edit/{id}(id=${student.id})}">こうしん</a></td>
-			<td><a th:href="@{student/delete/{id}(id=${student.id})}">削除</a></td>
+			<td><a th:href="@{/student/edit/{id}(id=${student.id})}">こうしん</a></td>
+			<td><a th:href="@{/student/delete/{id}(id=${student.id})}">削除</a></td>
 		</tr>
 	</tbody>
 </table>

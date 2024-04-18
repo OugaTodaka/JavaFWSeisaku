@@ -7,6 +7,7 @@
 <body>
 <h1>科目一覧</h1>
 <a href="/subject/add">科目追加</a>
+<a href="/">ホーム</a>
 <table border="2">
 	<thead>
 		<tr>
@@ -21,8 +22,8 @@
 			<th th:text="${subject.cd}"></th>
 			<th th:text="${subject.school.name}"></th>
 			<th th:text="${subject.name}"></th>
-			<th><a href="">更新</a></th>
-			<th><a href="">削除</a></th>
+			<th><a th:href="@{/subject/edit/{id}(id=${subject.id})}">更新</a></th>
+			<th><a th:href="@{/subject/delete/{id}(id=${subject.id})}">削除</a></th>
 		</tr>
 	</tbody>
 </table>

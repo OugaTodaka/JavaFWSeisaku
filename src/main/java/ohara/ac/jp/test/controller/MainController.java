@@ -16,6 +16,7 @@ import ohara.ac.jp.test.model.School;
 import ohara.ac.jp.test.model.Student;
 import ohara.ac.jp.test.service.SchoolService;
 import ohara.ac.jp.test.service.StudentService;
+import ohara.ac.jp.test.service.SubjectService;
 
 @Controller
 public class MainController {
@@ -24,6 +25,9 @@ public class MainController {
 	private StudentService studentService;
 	@Autowired
 	private SchoolService schoolService;
+	@Autowired
+	private SubjectService subjectService;
+
 
 	@RequestMapping("/student")
 	public ModelAndView student(ModelAndView model){
@@ -32,7 +36,16 @@ public class MainController {
 		model.addObject("student",student);
 		return model;
 	}
+	
+	@RequestMapping("/subject")
+	public ModelAndView subject(ModelAndView model){
+		model.setViewName("student");
+		List<Student>subject =subjectService.searchAll();
+		model.addObject("aubject",subject);
+		return model;
+	}
 
+	
 	@GetMapping("/studentadd")
 	public ModelAndView studentAdd(@ModelAttribute Student stu,ModelAndView model) {
 		model.setViewName("studentadd");

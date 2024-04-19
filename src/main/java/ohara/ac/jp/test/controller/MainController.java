@@ -32,7 +32,6 @@ public class MainController {
 	@RequestMapping("")
 	public ModelAndView index(ModelAndView mav) {
 		mav.setViewName("index");
-		mav.addObject("title","ホーム");
 		return mav;
 	}
 
@@ -61,7 +60,7 @@ public class MainController {
 	}
 
 	@PostMapping("/student/add")
-	public String studentAddRun(@ModelAttribute Student stu,ModelAndView mav) {
+	public String studentAddRun(@ModelAttribute Student stu) {
 		try {
 			stu.setNo(stu.getNo());
 			stu.setName(stu.getName());
@@ -81,6 +80,20 @@ public class MainController {
 	public ModelAndView subjectAdd(ModelAndView model) {
 		model.setViewName("subjectadd");
 		return model;
+	}
+	
+	@PostMapping("subject/add")
+	public String subjectAddRun(@ModelAttribute Subject sub) {
+		try {
+			sub.setCd(sub.getCd());
+			sub.setSchool_cd("tes");
+			sub.setName(sub.getName());
+			subjectService.insert(sub);
+			System.out.println(sub);
+			return "redirect:/subject";
+		}catch(DataIntegrityViolationException e) {
+			return "addError";
+		}
 	}
 	
 	@GetMapping("student/edit/{id}")

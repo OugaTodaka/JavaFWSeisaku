@@ -5,7 +5,12 @@
 <title>科目追加</title>
 </head>
 <body>
-<h1>科目追加</h1>
+	<header th:replace="header"></header>
+	
+<main>
+	<div th:replace="sideber"></div>
+	
+<h2>科目追加</h2>
 <form th:action="@{/subject/add}" method="post">
 	<table>
 		<tr>
@@ -18,7 +23,11 @@
 		</tr>
 	</table>
 		<input type="submit" value="登録"/>
+		<a href="/subject">戻る</a>
 </form>
-<a href="/subject">戻る</a>
+
+</main>
+	<footer th:replace="footer"></footer>
+
 </body>
 </html>

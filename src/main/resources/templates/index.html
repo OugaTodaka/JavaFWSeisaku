@@ -1,16 +1,22 @@
 <!DOCTYPE html>
-<html xmlns           ="http://www.w3.org/1999/xhtml"
-      xmlns:th        ="http://www.thymeleaf.org"
-      xmlns:layout    ="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="base">
+<html>
 <head>
-	<title th:text=${title}></title>
+	<title>ホーム</title>
 </head>
 <body>
-	<div layout:fragment="content">
-		<a href="/student">学生管理</a>
-		<a href="/subject">科目一覧</a>
-		<h1>うへ～～</h1>
-	</div>
+	<header th:replace="header"></header>
+
+	<main>
+		<div th:replace="sideber"></div>
+		<div>
+			<a href="/student">学生管理</a>
+			<a href="/subject">科目一覧</a>
+			<h1>うへ～～</h1>
+		</div>
+	</main>
+
+	<footer th:replace="footer"></footer>
+
+
 </body>
 </html>

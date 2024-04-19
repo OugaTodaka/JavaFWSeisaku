@@ -7,7 +7,8 @@ INSERT INTO CLASS_NUM(SCHOOL_CD, CLASS_NUM) VALUES
 
 INSERT INTO SCHOOL(CD, NAME) VALUES
 ('tes', 'テスト校'),
-('san','サンプル校');
+('san','サンプル校'),
+('del','削除済み');
 
 INSERT INTO STUDENT(NO, NAME, ENT_YEAR, CLASS_NUM, IS_ATTEND, SCHOOL_CD) VALUES
 ('2231111', '大原太郎', 2022, '301', TRUE, 'tes'),

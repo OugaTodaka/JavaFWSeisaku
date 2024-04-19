@@ -29,6 +29,12 @@ public class MainController {
 	@Autowired
 	private SubjectService subjectService;
 
+	@RequestMapping("")
+	public ModelAndView index(ModelAndView mav) {
+		mav.setViewName("index");
+		mav.addObject("title","ホーム");
+		return mav;
+	}
 
 	@RequestMapping("/student")
 	public ModelAndView student(ModelAndView model){
@@ -46,9 +52,8 @@ public class MainController {
 		return model;
 	}
 
-	
 	@GetMapping("/student/add")
-	public ModelAndView studentAdd(@ModelAttribute Student stu,ModelAndView model) {
+	public ModelAndView studentAdd(ModelAndView model) {
 		model.setViewName("studentadd");
 		List<School>list = schoolService.searchAll();
 		model.addObject("school",list);
@@ -72,6 +77,12 @@ public class MainController {
 		}
 	}
 	
+	@GetMapping("subject/add")
+	public ModelAndView subjectAdd(ModelAndView model) {
+		model.setViewName("subjectadd");
+		return model;
+	}
+	
 	@GetMapping("student/edit/{id}")
 	public ModelAndView studentEdit(@PathVariable(name="id")Long id,ModelAndView mav) {
 		mav.setViewName("studentedit");
@@ -81,7 +92,7 @@ public class MainController {
 		mav.addObject("stu",stu);
 		return mav;
 	}
-	
+
 	@PostMapping("student/edit/{id}")
 	public String studentEditRun(@PathVariable(name="id")Long id,@ModelAttribute Student form) {
 		Student stu = studentService.get(id);

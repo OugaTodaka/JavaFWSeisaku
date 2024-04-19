@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>ホーム</title>
+	<title>メニュー</title>
+	<link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
 	<header th:replace="header"></header>
-
+	<div th:replace="sideber"></div>
 	<main>
-		<div th:replace="sideber"></div>
+		<h2>メニュー</h2>
 		<div>
 			<a href="/student">学生管理</a>
+		</div>
+		<div>
+			<p>成績管理</p>
+			<p><a href="/score/add">成績登録</a></p>
+			<p><a href="/score">成績参照</a></p>
+		</div>
+		<div>
 			<a href="/subject">科目一覧</a>
-			<h1>うへ～～</h1>
 		</div>
 	</main>
 
 	<footer th:replace="footer"></footer>
-
 
 </body>
 </html>

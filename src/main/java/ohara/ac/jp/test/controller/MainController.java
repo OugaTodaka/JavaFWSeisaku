@@ -160,7 +160,7 @@ public class MainController {
 		mav.addObject("sub",sub);
 		return mav;
 	}
-	
+
 	@PostMapping("subject/delete/{id}")
 	public String subjectDeleteRun(@PathVariable(name="id")Long id) {
 		Subject sub = subjectService.get(id);

@@ -117,6 +117,23 @@ public class MainController {
 		return "redirect:/student";
 	}
 	
+	@GetMapping("subject/edit/{id}")
+	public ModelAndView subjectEdit(@PathVariable(name="id")Long id,ModelAndView mav) {
+		mav.setViewName("subjectedit");
+		Subject sub = subjectService.get(id);
+		mav.addObject("sub",sub);
+		return mav;
+	}
+
+	@PostMapping("subject/edit/{id}")
+	public String subjectEditRun(@PathVariable(name="id")Long id,@ModelAttribute Subject form) {
+		Subject sub = subjectService.get(id);
+		sub.setName(form.getName());
+		subjectService.update(sub);
+		System.out.println("更新："+sub);
+		return "redirect:/subject";
+	}
+	
 	@GetMapping("student/delete/{id}")
 	public ModelAndView studentDelete(@PathVariable(name="id")Long id,ModelAndView mav) {
 		mav.setViewName("studentdelete");
@@ -134,6 +151,22 @@ public class MainController {
 		studentService.update(stu);
 		System.out.println("削除："+stu);
 		return "redirect:/student";
+	}
+	
+	@GetMapping("subject/delete/{id}")
+	public ModelAndView subjectDelete(@PathVariable(name="id")Long id,ModelAndView mav) {
+		mav.setViewName("subjectdelete");
+		Subject sub = subjectService.get(id);
+		mav.addObject("sub",sub);
+		return mav;
+	}
+	
+	@PostMapping("subject/delete/{id}")
+	public String subjectDeleteRun(@PathVariable(name="id")Long id) {
+		Subject sub = subjectService.get(id);
+		subjectService.delete(id);
+		System.out.println("削除："+sub);
+		return "redirect:/subject";
 	}
 
 }

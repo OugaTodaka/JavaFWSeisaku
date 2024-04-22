@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>生徒追加</title>
+</head>
+<body>
+
+	<header th:replace="header"></header>
+
+<main>
+
+	<div th:replace="sideber"></div>
+
+
+	<form th:object="${sub}" th:action="'/subject/delete/'+${id}" method="post">
+	<table>
+		<tr>
+			<td>科目コード：</td>
+			<td　th:text="${sub.cd}"></td>
+		</tr>
+		<tr>
+			<td>科　目　名：</td>
+			<td　th:text="${sub.name}"></td>
+		</tr>
+	</table>
+	<p>この科目データを削除しますか？</p>
+	<input type="submit" value="削除">	<a href="/subject">戻る</a>
+</form>
+
+
+</main>
+
+	<footer th:replace="footer"></footer>
+
+</body>
+</html>

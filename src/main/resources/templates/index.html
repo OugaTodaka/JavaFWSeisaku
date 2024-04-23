@@ -6,28 +6,25 @@
 </head>
 <body>
 	<header th:replace="header"></header>
-<main>
 	<div th:replace="sideber"></div>
 	
-	<nav layout:fragment="main" class="main">
 	<main>
-		<h2>メニュー</h2>
-		<div>
-			<a href="/student">学生管理</a>
+		<p><h2>メニュー</h2></p>
+		<div class="red">
+			<p><a href="/student">学生管理</a></p>
 		</div>
-		<div>
-			<p>成績管理</p>
-			<p><a href="/score/add">成績登録</a></p>
-			<p><a href="/score">成績参照</a></p>
+		<div class="green">
+			<a>成績管理</a><br>
+			<a href="/score/add">成績登録</a><br>
+			<a href="/score">成績参照</a><br>
 		</div>
-		<div>
-			<a href="/subject">科目一覧</a>
+		<div class="purple">
+			<p><a href="/subject">科目一覧</a></p>
 		</div>
 	</main>
-	</nav>
->>>>>>> 5dafbaa css
-
-	<footer th:replace="footer"></footer>
-
+	
+	<div>
+		<div th:replace="footer"></div>
+	</div>
 </body>
 </html>

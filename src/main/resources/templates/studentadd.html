@@ -2,10 +2,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link th:href="@{/css/style.css}" rel="stylesheet" />
 <title>生徒追加</title>
 </head>
 <body>
-<h1>生徒追加</h1>
+	<header th:replace="header"></header>
+<main>
+	<div th:replace="sideber"></div>
+<h2>生徒追加</h2>
 <form th:action="@{/student/add}" method="post">
 	<p><input type="text" name="no" maxlength="7" pattern="^[0-9]+$" placeholder="学籍番号（数字７桁）" required/></p>
 	<p><input type="text" name="name" maxlength="10" placeholder="氏　名"/></p>
@@ -28,7 +32,11 @@
 		<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
 		</select>
 	</p>
-	<p><input type="submit" value="登録"/></p>
+	<input type="submit" value="登録"/>
+	<a href="/student">戻る</a>
 </form>
+</main>
+	<footer th:replace="footer"></footer>
+
 </body>
 </html>

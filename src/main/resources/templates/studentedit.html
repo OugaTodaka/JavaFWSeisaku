@@ -2,9 +2,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link th:href="@{/css/style.css}" rel="stylesheet" />
 <title>更新</title>
 </head>
 <body>
+		<header th:replace="header"></header>
+
+<main>
+	<div th:replace="sideber"></div>	
 <h1>データ更新</h1>
 <form th:object="${stu}" th:action="'/student/edit/'+${id}" method="post">
 	<p>学生番号：<input type="text" name="no" th:value="${stu.no}" disabled></p>
@@ -19,5 +24,9 @@
 	</p>
 	<input type="submit" value="更新">
 </form>
+
+</main>
+	<footer th:replace="footer"></footer>
+
 </body>
 </html>

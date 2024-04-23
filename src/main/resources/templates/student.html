@@ -2,11 +2,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
+	<link th:href="@{/css/style.css}" rel="stylesheet" />
 <title>o-hara</title>
 </head>
 <body>
-
-<h1>StudentList</h1>
+	<header th:replace="header"></header>
+<main>
+	<div th:replace="sideber"></div>
+<h2>StudentList</h2>
 <a href="/student/add">生徒追加</a>
 <table border="2">
 	<thead>
@@ -26,11 +29,13 @@
 			<td th:text="${student.ent_year}"></td>
 			<td th:text="${student.class_num}"></td>
 			<td th:text="${student.school.name}"></td>
-			<td><a th:href="@{student/edit/{id}(id=${student.id})}">こうしん</a></td>
-			<td><a th:href="@{student/delete/{id}(id=${student.id})}">削除</a></td>
+			<td><a th:href="@{/student/edit/{id}(id=${student.id})}">こうしん</a></td>
+			<td><a th:href="@{/student/delete/{id}(id=${student.id})}">削除</a></td>
 		</tr>
 	</tbody>
 </table>
+</main>
+	<footer th:replace="footer"></footer>
 
 </body>
 </html>

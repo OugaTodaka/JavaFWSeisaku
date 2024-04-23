@@ -6,10 +6,9 @@
 <title>更新</title>
 </head>
 <body>
-		<header th:replace="header"></header>
-
-<main>
-	<div th:replace="sideber"></div>	
+	<header th:replace="header"></header>
+	<div th:replace="sideber"></div>
+<main>	
 <h1>データ更新</h1>
 <form th:object="${stu}" th:action="'/student/edit/'+${id}" method="post">
 	<p>学生番号：<input type="text" name="no" th:value="${stu.no}" disabled></p>
@@ -26,7 +25,8 @@
 </form>
 
 </main>
+<div>
 	<footer th:replace="footer"></footer>
-
+</div>
 </body>
 </html>

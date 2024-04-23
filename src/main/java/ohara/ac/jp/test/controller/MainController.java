@@ -103,9 +103,14 @@ public class MainController {
 	}
 	
 	@GetMapping("/score/add")
-	public ModelAndView scoreadd(ModelAndView mav) {
+	public ModelAndView scoreAdd(ModelAndView mav) {
 		mav.setViewName("scoreadd");
 		return mav;
+	}
+	
+	@PostMapping("/score/add")
+	public String scoreAddRun(ModelAndView mav) {
+		return "redirect:/score";
 	}
 	
 	@GetMapping("/student/edit/{id}")
@@ -180,5 +185,4 @@ public class MainController {
 		System.out.println("削除："+sub);
 		return "redirect:/subject";
 	}
-
 }

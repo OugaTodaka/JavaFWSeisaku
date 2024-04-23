@@ -7,8 +7,9 @@
 </head>
 <body>
 	<header th:replace="header"></header>
-<main>
 	<div th:replace="sideber"></div>
+<main>
+
 <h1>データ更新</h1>
 <form th:object="${sub}" th:action="'/subject/edit/'+${id}" method="post">
 	<p>科目コード：<input type="text" name="cd" th:value="${sub.cd}" disabled></p>
@@ -17,6 +18,8 @@
 </form>
 
 </main>
+<div>
 	<footer th:replace="footer"></footer>
+</div>
 </body>
 </html>

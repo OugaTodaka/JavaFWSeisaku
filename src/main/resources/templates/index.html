@@ -5,35 +5,25 @@
 	<link th:href="@{/css/style.css}" rel="stylesheet" />
 </head>
 <body>
-<<<<<<< HEAD
-<h1>得点管理システム</h1>
-<a href="/student">学生管理</a>
-<a href="/subject">科目一覧</a>
-<h1>うへ～～</h1>
-<form th:action="@{/logout}" method="post">
-        <input type="submit" name="logout" value="ログアウト"/>
-    </form>
-=======
 	<header th:replace="header"></header>
 	<div th:replace="sideber"></div>
 	
-	<main>
-		<h2>メニュー</h2>
-		<div>
+	<main class="menu">
+		<p><h2>メニュー</h2></p>
+		<div class="red">
 			<a href="/student">学生管理</a>
 		</div>
-		<div>
-			<p>成績管理</p>
-			<p><a href="/score/add">成績登録</a></p>
-			<p><a href="/score">成績参照</a></p>
+		<div class="green">
+			<a>成績管理</a><br>
+			<a href="/score/add">成績登録</a><br>
+			<a href="/score">成績参照</a><br>
 		</div>
-		<div>
+		<div class="purple">
 			<a href="/subject">科目一覧</a>
 		</div>
 	</main>
 
-	<footer th:replace="footer"></footer>
+	<div th:replace="footer"></div>
 
->>>>>>> branch 'master' of https://github.com/OugaTodaka/JavaFWSeisaku
 </body>
 </html>

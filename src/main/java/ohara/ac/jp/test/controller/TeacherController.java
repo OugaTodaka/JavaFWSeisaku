@@ -1,6 +1,8 @@
 package ohara.ac.jp.test.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import ohara.ac.jp.test.model.Teacher;
 import ohara.ac.jp.test.service.TeacherService;
@@ -64,6 +68,13 @@ public class TeacherController {
         // 登録処理を行う
         teacherhashService.hashTeacher(teacher);
         return "redirect:/login"; // ログインページにリダイレクト
+    }
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
+        // セキュリティコンテキストから現在の認証情報を取得し、ログアウト処理を実行
+        SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
+        logoutHandler.logout(request, response, SecurityContextHolder.getContext().getAuthentication());
+        return "redirect:/login?logout"; // ログアウト後のリダイレクト先を指定
     }
 	
 }

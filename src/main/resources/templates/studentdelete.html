@@ -7,8 +7,9 @@
 </head>
 <body>
 	<header th:replace="header"></header>
-<main>
 	<div th:replace="sideber"></div>
+<main>
+
 <form th:object="${stu}" th:action="'/student/delete/'+${id}" method="post">
 	<table>
 		<tr>
@@ -37,7 +38,8 @@
 </form>
 
 </main>
+<div>
 	<footer th:replace="footer"></footer>
-
+</div>
 </body>
 </html>

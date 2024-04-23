@@ -8,10 +8,8 @@
 <body>
 
 	<header th:replace="header"></header>
-
-<main>
-
 	<div th:replace="sideber"></div>
+<main>
 
 
 	<form th:object="${sub}" th:action="'/subject/delete/'+${id}" method="post">
@@ -31,8 +29,8 @@
 
 
 </main>
-
+<div>
 	<footer th:replace="footer"></footer>
-
+</div>
 </body>
 </html>

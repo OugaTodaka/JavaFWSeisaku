@@ -7,8 +7,8 @@
 </head>
 <body>
 	<header th:replace="header"></header>
-<main>
 	<div th:replace="sideber"></div>
+<main>
 <h2>生徒追加</h2>
 <form th:action="@{/student/add}" method="post">
 	<p><input type="text" name="no" maxlength="7" pattern="^[0-9]+$" placeholder="学籍番号（数字７桁）" required/></p>
@@ -36,7 +36,8 @@
 	<a href="/student">戻る</a>
 </form>
 </main>
+<div>
 	<footer th:replace="footer"></footer>
-
+</div>
 </body>
 </html>

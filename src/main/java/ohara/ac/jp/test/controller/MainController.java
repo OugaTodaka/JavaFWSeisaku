@@ -109,9 +109,8 @@ public class MainController {
 	}
 	
 	@PostMapping("/score/add")
-	public ModelAndView scoreAddRun(ModelAndView mav) {
-		mav.setViewName("");
-		return mav;
+	public String scoreAddRun(ModelAndView mav) {
+		return "redirect:/score";
 	}
 	
 	@GetMapping("/student/edit/{id}")

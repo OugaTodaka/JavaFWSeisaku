@@ -8,10 +8,10 @@
 	<header th:replace="header"></header>
 	<div th:replace="sideber"></div>
 	
-	<main>
+	<main class="menu">
 		<p><h2>メニュー</h2></p>
 		<div class="red">
-			<p><a href="/student">学生管理</a></p>
+			<a href="/student">学生管理</a>
 		</div>
 		<div class="green">
 			<a>成績管理</a><br>
@@ -19,12 +19,11 @@
 			<a href="/score">成績参照</a><br>
 		</div>
 		<div class="purple">
-			<p><a href="/subject">科目一覧</a></p>
+			<a href="/subject">科目一覧</a>
 		</div>
 	</main>
-	
-	<div>
-		<div th:replace="footer"></div>
-	</div>
+
+	<div th:replace="footer"></div>
+
 </body>
 </html>

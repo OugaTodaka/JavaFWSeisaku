@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<body class="bt-light">
+  <!-- 背景色 -->
+  <div class="container mt-5">
+    <!-- コンテナ中央寄せ -->
+    <h2 class="text-center">LOGIN</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <!-- ログインフォーム -->
+        <form th:action="@{/login}" method="POST" class="card card-body w-75 mx-auto mb-3">
+          <div class="mb-3">
+            <label for="text" class="form-label">teacher_id:</label>
+            <input type="text" class="form-control" id="teacher_id" name="teacher_id" required autofocus />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" required />
+          </div>
+          <button type="submit" class="btn btn-primary w-100" value="btnSignIn">Sign In</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="https://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title th:text="${title}">ぶーん</title>
+<meta http-equiv="Content-Type"content="text/html; charset=UTF-8" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+rel="stylesheet">
+</head>
+<body class="container-sm text-center">
+<h1 class="display-4 mb-4" th:text="${title}"></h1>
+<div class="border border-1 p-3 mx-auto" style="max-width: 600px;">
+    <p class="h6" th:text="${msg}"></p>
+
+    <h3>教員登録フォーム</h3>
+    <form th:action="@{/signup}" method="post">
+		<div class="mb-3">
+            <label for="entYear" class="form-label">教員番号</label>
+            <input type="text" class="form-control" id="teacherId" name="teacherId">
+        </div>
+        
+        <div class="mb-3">
+            <label for="no" class="form-label">パスワード</label>
+            <input type="text" class="form-control" id="password" name="password">
+        </div>
+        
+        <div class="mb-3">
+            <label for="name" class="form-label">名前</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="mb-3">
+            <label for="classNum" class="form-label">学校番号</label>
+            <input type="text" class="form-control" id="schoolCd" name="schoolCd">
+        </div>
+        <button type="submit" class="btn btn-primary">保存</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,5 +1,4 @@
 package ohara.ac.jp.test.model;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -22,7 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "TEACHER")
-public class Teacher implements Serializable, UserDetails{
+public class Teacher implements UserDetails{
 	@Id
 	@Column(name= "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,32 +48,53 @@ public class Teacher implements Serializable, UserDetails{
 	@Override
 	public String getUsername() {
 		// TODO 自動生成されたメソッド・スタブ
-		return teacherId.toString();
+		return teacherId;
 	}
 
+//	@Override
+//	public boolean isAccountNonExpired() {
+//		// TODO 自動生成されたメソッド・スタブ
+//		return false;
+//	}
+//
+//	@Override
+//	public boolean isAccountNonLocked() {
+//		// TODO 自動生成されたメソッド・スタブ
+//		return false;
+//	}
+//
+//	@Override
+//	public boolean isCredentialsNonExpired() {
+//		// TODO 自動生成されたメソッド・スタブ
+//		return false;
+//	}
+//
+//	@Override
+//	public boolean isEnabled() {
+//		// TODO 自動生成されたメソッド・スタブ
+//		return false;
+//	}
+	
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
+	    return true; // アカウントの有効期限が切れていないことを示す
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
+	    return true; // アカウントがロックされていないことを示す
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
+	    return true; // 資格情報が有効であることを示す
 	}
 
 	@Override
 	public boolean isEnabled() {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
+	    return true; // アカウントが有効化されていることを示す
 	}
+
 	@Override
 	public String getPassword() {
 		return password;

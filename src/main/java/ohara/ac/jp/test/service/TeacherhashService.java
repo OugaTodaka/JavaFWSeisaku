@@ -18,7 +18,10 @@ public class TeacherhashService {
     public void hashTeacher(Teacher teacherModel) {
         Teacher teacher = new Teacher();
         teacher.setTeacherId(teacherModel.getTeacherId());
+
         teacher.setPassword(passwordEncoder.encode(teacherModel.getPassword()));
+
+        //teacher.setPassword(teacherModel.getPassword());
         teacher.setSchoolCd(teacherModel.getSchoolCd());
         teacher.setName(teacherModel.getName());
         teacherRepository.save(teacher);

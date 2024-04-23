@@ -7,7 +7,7 @@ import ohara.ac.jp.test.model.Teacher;
 
 //public interface TeacherRepository extends JpaRepository<Teacher, Long>
 //{
-//  public Teacher findByTeacherId(String teacher_id);
+//  public Teacher findByTeacherId(String teacherId);
 //
 //}
 //
@@ -15,12 +15,12 @@ import ohara.ac.jp.test.model.Teacher;
 //public interface TeacherRepository extends JpaRepository<Teacher, Long>{
 //
 //    // メールアドレスによりユーザーを検索
-//	Teacher findByTeacherId(String teacher_id);
+//	Teacher findByTeacherId(String teacherId);
 //}
 
 @Repository
 public interface TeacherRepository extends JpaRepository<Teacher, Long> {
-    Teacher findByTeacherId(String teacher_id);
+    Teacher findByTeacherId(String teacherId);
 }
 
 

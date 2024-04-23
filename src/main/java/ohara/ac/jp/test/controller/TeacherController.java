@@ -20,24 +20,34 @@ public class TeacherController {
 	@Autowired
 	private TeacherhashService teacherhashService;
 	
+	@GetMapping("/loginSuccess")
+	public String test(Model model) {
+		return "loginSuccess";
+	}
+	
+	
 	@GetMapping("/login")
 	public String loginForm(Model model) {
 		model.addAttribute("teacherModel",new Teacher());
+		System.out.println("ログインページ１");
 		return "login";
 	}
 	
 	@PostMapping("/login")
-    public String login(String teacher_id,String password, HttpSession session) {
-	   	 if (teacherService.authenticate(teacher_id, password)) {
+    public String login(String teacherId,String password, HttpSession session) {  //ここあやしい
+		System.out.println("ログインページ２"+teacherId);
+	   	 if (teacherService.authenticate(teacherId, password)) {
 	         // 認証に成功した場合、セッションを開始してログイン状態にする
-	         session.setAttribute("teacher_id", teacher_id);
-	         return "redirect:top" ; // ログイン後のリダイレクト先を指定
+	         session.setAttribute("teacherId", teacherId);
+	         return "redirect:loginSuccess" ; // ログイン後のリダイレクト先を指定
 	     } else {
 	         // 認証に失敗した場合はログインフォームに戻す
-	    	 System.out.println("認証失敗" + teacher_id);
+	    	 System.out.println("認証失敗" + teacherId);
+	    	 System.out.println("認証失敗1");
 	         return "redirect:/login?error";
 	     }
-	}
+	} 
+
 	@GetMapping("/signup")
     public String showSignupForm(Model model) {
         model.addAttribute("teacherModel", new Teacher());

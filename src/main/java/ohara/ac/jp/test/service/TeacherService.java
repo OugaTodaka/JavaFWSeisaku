@@ -17,15 +17,15 @@ public class TeacherService implements UserDetailsService{
     
     
     @Override
-    public UserDetails loadUserByUsername(String teacher_id) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String teacherId) throws UsernameNotFoundException {
         // DBベースのユーザー検索
-        Teacher teacher = teacherRepository.findByTeacherId (teacher_id);
-                //.orElseThrow(() -> new UsernameNotFoundException("User not found with teacherId: " + teacher_id));
+        Teacher teacher = teacherRepository.findByTeacherId (teacherId);
+                //.orElseThrow(() -> new UsernameNotFoundException("User not found with teacherId: " + teacherId));
         
         return teacher;
         }
 
-	public boolean authenticate(String teacher_id, String password) {
+	public boolean authenticate(String teacherId, String password) {
 		// TODO 自動生成されたメソッド・スタブ
 		return false;
 	}

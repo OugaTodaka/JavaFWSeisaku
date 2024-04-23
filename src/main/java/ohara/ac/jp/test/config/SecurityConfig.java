@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import ohara.ac.jp.test.service.TeacherService;
  
- 
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -54,12 +54,13 @@ public class SecurityConfig {
 							.requestMatchers("/css/**").permitAll()     // CSSのstaticファイル
 							.requestMatchers("/images/**").permitAll()  // 画像のstaticファイル
 							.anyRequest().authenticated();              // それ以外は認証必須
+					
 				})
 				.formLogin(form -> {
 					form
 							.loginPage("/login")             // ログインページのURI
 							.loginProcessingUrl("/login")    // ログインを実施するページのURI
-							.defaultSuccessUrl("/main/home")           // ログイン完了後の遷移先
+							.defaultSuccessUrl("/loginSuccess")           // ログイン完了後の遷移先
 							.failureUrl("/login?error=true") // ログインエラーページのURI
 							.usernameParameter("teacherId") // ログインユーザのname属性
 							.passwordParameter("password");   // ログインパスワードのname属性

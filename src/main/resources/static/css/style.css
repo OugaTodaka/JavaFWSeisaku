@@ -28,25 +28,24 @@ main h2{
 
 .red{
 	float:left;
-	height:40%;
+	height:60px;
 	background-color: #CC9999;
 	padding: 20px 40px 20px 40px;
 	margin: 15px 5px 15px 5px;
 }
 .green{
 	float:left;
-	height:40%;
+	height:60px;
 	background-color: #99CCCC;
 	padding: 20px 40px 20px 40px;
 	margin: 15px 5px 15px 5px;
 }
 .purple{
 	float:left;
-	height:40%;
+	height:60px;
 	background-color: #9999CC;
 	padding: 20px 40px 20px 40px;
 	margin: 15px 5px 15px 5px;
-	box-sizing:border-box;
 }
 
 footer{

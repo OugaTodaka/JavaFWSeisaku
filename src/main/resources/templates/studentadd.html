@@ -11,29 +11,31 @@
 <main>
 <h2>生徒追加</h2>
 <form th:action="@{/student/add}" method="post">
-	<p><input type="text" name="no" maxlength="7" pattern="^[0-9]+$" placeholder="学籍番号（数字７桁）" required/></p>
-	<p><input type="text" name="name" maxlength="10" placeholder="氏　名"/></p>
-
-	<p>
-		<select name="ent_year" required>
-		<option value="">入学年度を選択</option>
-		<script type="text/javascript">
-		for (i = 2015; i < 2031; i++){
-			document.write('<option value="'+i+'">'+i+'</option>');
-		}
-		</script>
-		</select>
-	</p>
-
-	<p><input type="text" name="class_num" maxlength="3" pattern="^[0-9]+$" placeholder="クラス（数字３桁）"/></p>
-	<p>
-		<select name="school_cd" required>
-		<option value="">所属学校を選択</option>
-		<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
-		</select>
-	</p>
-	<input type="submit" value="登録"/>
-	<a href="/student">戻る</a>
+	<div  class="studentadd">
+		<p><input type="text" name="no" maxlength="7" pattern="^[0-9]+$" placeholder="学籍番号（数字７桁）" required/></p>
+		<p><input type="text" name="name" maxlength="10" placeholder="氏　名"/></p>
+	
+		<p>
+			<select name="ent_year" required>
+			<option value="">入学年度を選択</option>
+			<script type="text/javascript">
+			for (i = 2015; i < 2031; i++){
+				document.write('<option value="'+i+'">'+i+'</option>');
+			}
+			</script>
+			</select>
+		</p>
+	
+		<p><input type="text" name="class_num" maxlength="3" pattern="^[0-9]+$" placeholder="クラス（数字３桁）"/></p>
+		<p>
+			<select name="school_cd" required>
+			<option value="">所属学校を選択</option>
+			<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
+			</select>
+		</p>
+		<input type="submit" value="登録"/>
+		<a href="/student">戻る</a>
+	</div>
 </form>
 </main>
 <div>

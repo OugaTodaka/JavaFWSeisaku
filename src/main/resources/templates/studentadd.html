@@ -12,10 +12,7 @@
 <h2>生徒追加</h2>
 <form th:action="@{/student/add}" method="post">
 	<div  class="studentadd">
-		<p><input type="text" name="no" maxlength="7" pattern="^[0-9]+$" placeholder="学籍番号（数字７桁）" required/></p>
-		<p><input type="text" name="name" maxlength="10" placeholder="氏　名"/></p>
-	
-		<p>
+		<div class="form-select">
 			<select name="ent_year" required>
 			<option value="">入学年度を選択</option>
 			<script type="text/javascript">
@@ -24,16 +21,19 @@
 			}
 			</script>
 			</select>
-		</p>
+		</div>
+		
+		<p><input type="text" name="no" class="form-text" maxlength="7" pattern="^[0-9]+$" placeholder="学籍番号を入力してください" required/></p>
+		<p><input type="text" name="name" class="form-text" maxlength="10" placeholder="氏名を入力してください"/></p>
 	
-		<p><input type="text" name="class_num" maxlength="3" pattern="^[0-9]+$" placeholder="クラス（数字３桁）"/></p>
-		<p>
+		<p><input type="text" name="class_num" class="form-text" maxlength="3" pattern="^[0-9]+$" placeholder="クラス（数字３桁）"/></p>
+		<div class="form-select">
 			<select name="school_cd" required>
 			<option value="">所属学校を選択</option>
 			<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
 			</select>
-		</p>
-		<input type="submit" value="登録"/>
+		</div>
+		<br><input type="submit" value="登録して終了" class="form-submit-button"/><br><br>
 		<a href="/student">戻る</a>
 	</div>
 </form>

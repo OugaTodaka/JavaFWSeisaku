@@ -15,15 +15,15 @@
 <form th:action="@{/subject/add}" method="post">
 	<table>
 		<tr>
-			<td><label for="cd">科目コード</label></td>
-			<td><input type="text" name="cd" id="cd" maxlength="3" placeholder="科目コードを入力してください" required/></td>
+			<label for="cd">科目コード</label><br>
+			<input type="text" name="cd" class="form-text" id="cd" maxlength="3" placeholder="科目コードを入力してください" required/>
 		</tr>
 		<tr>
-			<td><label for="name">科目名</label></td>
-			<td><input type="text" name="name" id="name" placeholder="科目名を入力してください" required/></td>
+			<label for="name">科目名</label><br>
+			<input type="text" name="name" class="form-text" id="name" placeholder="科目名を入力してください" required/>
 		</tr>
 	</table>
-		<input type="submit" value="登録"/>
+		<input type="submit" value="登録" class="form-submit-button"/><br><br>
 		<a href="/subject">戻る</a>
 </form>
 

@@ -28,6 +28,12 @@ main h2{
 	padding: 10px 10px 10px 10px;
 }
 
+thead{
+	background-color: red;
+	height:3px;
+	width:5px;
+}
+
 .red{
 	float:left;
 	height:70px;

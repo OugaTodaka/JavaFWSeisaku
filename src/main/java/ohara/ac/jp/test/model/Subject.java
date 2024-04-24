@@ -24,14 +24,14 @@ public class Subject implements Serializable{
 	@Column(name= "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
 	@Column(name = "SCHOOL_CD")
 	private String school_cd;
 	
 	@ManyToOne()
 	@JoinColumn(name="school_cd",referencedColumnName="cd",insertable=false,updatable=false)
 	private School school;
-
+	
 	@Column(name = "CD")
 	private String cd;
 

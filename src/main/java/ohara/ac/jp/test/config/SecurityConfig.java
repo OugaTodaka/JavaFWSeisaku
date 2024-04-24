@@ -1,4 +1,4 @@
-/*package ohara.ac.jp.test.config;
+package ohara.ac.jp.test.config;
 
 import javax.sql.DataSource;
 
@@ -60,7 +60,7 @@ public class SecurityConfig {
 					form
 							.loginPage("/login")             // ログインページのURI
 							.loginProcessingUrl("/login")    // ログインを実施するページのURI
-							.defaultSuccessUrl("/loginSuccess")           // ログイン完了後の遷移先
+							.defaultSuccessUrl("/")           // ログイン完了後の遷移先
 							.failureUrl("/login?error=true") // ログインエラーページのURI
 							.usernameParameter("teacherId") // ログインユーザのname属性
 							.passwordParameter("password");   // ログインパスワードのname属性
@@ -76,7 +76,7 @@ public class SecurityConfig {
 		return http.build();
 	}
 }
-*/
+/*
 package ohara.ac.jp.test.config;
  
 import javax.sql.DataSource;
@@ -139,3 +139,4 @@ public class SecurityConfig {
 	}
  
 }
+*/

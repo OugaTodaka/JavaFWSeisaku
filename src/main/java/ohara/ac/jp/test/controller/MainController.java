@@ -31,7 +31,9 @@ public class MainController {
 
 	@RequestMapping("")
 	public ModelAndView index(ModelAndView mav) {
+		String username = "a";
 		mav.setViewName("index");
+		mav.addObject("username",username);
 		return mav;
 	}
 

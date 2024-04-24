@@ -9,7 +9,7 @@ header{
 
 sidebar{
 	float:left;
-	width:15%;
+	width:20%;
 	height:400px;
 	text-align:center;
 	padding:20px 0 20px;
@@ -17,9 +17,11 @@ sidebar{
 	
 main{
 	float:right;
-	width:85%;
-	height:400px;
-	padding-bottom:20px;
+	width:75%;
+	height:500px;
+	margin:8px 0 8px;
+	padding:0 20px 20px;
+	border-left: 1px solid black;
 }
 main h2{
 	background-color: gainsboro;
@@ -28,21 +30,21 @@ main h2{
 
 .red{
 	float:left;
-	height:60px;
+	height:70px;
 	background-color: #CC9999;
 	padding: 20px 40px 20px 40px;
 	margin: 15px 5px 15px 5px;
 }
 .green{
 	float:left;
-	height:60px;
+	height:70px;
 	background-color: #99CCCC;
 	padding: 20px 40px 20px 40px;
 	margin: 15px 5px 15px 5px;
 }
 .purple{
 	float:left;
-	height:60px;
+	height:70px;
 	background-color: #9999CC;
 	padding: 20px 40px 20px 40px;
 	margin: 15px 5px 15px 5px;
@@ -54,4 +56,92 @@ footer{
 	clear:right;
 	height:50px;
 	padding:20px;
+}
+
+.form-text {
+    height: 2.4em;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left:8px;
+    margin:5px 0 5px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 0 0 1px #ccc inset;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.form-text:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+
+.form-select {
+    position: relative;
+}
+
+.form-select:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    right: 12px;
+    width: 8px;
+    height: 8px;
+    box-sizing: border-box;
+    border-top: 2px solid #333;
+    border-right: 2px solid #333;
+    transform: rotate(135deg);
+    pointer-events: none;
+}
+
+.form-select select {
+    height: 2.4em;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 8px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 0 0 1px #ccc inset;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.form-select select::-ms-expand {
+    display: none;
+}
+
+.form-select select:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+.form-submit-button {
+    display: inline-block;
+    width: 100px;
+    padding: 8px 0 8px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    color: #fff;
+    font-weight: bold;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.form-submit-button:hover {
+    background-color: #000;
+}
+
+.form-submit-button:focus {
+    outline: 0;
+    background-color: #000;
+    border: 2px solid rgb(33, 150, 243);
 }

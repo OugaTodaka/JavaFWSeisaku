@@ -22,7 +22,7 @@ public class TeacherhashService {
         teacher.setPassword(passwordEncoder.encode(teacherModel.getPassword()));
 
         //teacher.setPassword(teacherModel.getPassword());
-        teacher.setSchoolCd(teacherModel.getSchoolCd());
+        teacher.setSchool_cd(teacherModel.getSchool_cd());
         teacher.setName(teacherModel.getName());
         teacherRepository.save(teacher);
     }

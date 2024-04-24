@@ -1,5 +1,7 @@
 package ohara.ac.jp.test.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -14,7 +16,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import ohara.ac.jp.test.model.School;
 import ohara.ac.jp.test.model.Teacher;
+import ohara.ac.jp.test.service.SchoolService;
 import ohara.ac.jp.test.service.TeacherService;
 import ohara.ac.jp.test.service.TeacherhashService;
 @Controller
@@ -23,13 +27,14 @@ public class TeacherController {
 	private TeacherService teacherService;
 	@Autowired
 	private TeacherhashService teacherhashService;
+	@Autowired
+	private SchoolService schoolService;
 	
 	@GetMapping("/loginSuccess")
 	public String test(Model model) {
 		return "loginSuccess";
 	}
-	
-	
+
 	@GetMapping("/login")
 	public String loginForm(Model model) {
 		model.addAttribute("teacherModel",new Teacher());
@@ -55,6 +60,8 @@ public class TeacherController {
 	@GetMapping("/signup")
     public String showSignupForm(Model model) {
         model.addAttribute("teacherModel", new Teacher());
+        List<School>list = schoolService.searchAll();
+        model.addAttribute("school",list);
         return "signup";
     }
  

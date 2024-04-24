@@ -1,4 +1,5 @@
 package ohara.ac.jp.test.model;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -11,6 +12,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +24,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "TEACHER")
-public class Teacher implements UserDetails{
+public class Teacher implements UserDetails,Serializable{
 	@Id
 	@Column(name= "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +40,11 @@ public class Teacher implements UserDetails{
 	private String name;
 	
 	@Column(name = "SCHOOL_CD")
-	private String schoolCd;
+	private String school_cd;
+	
+	@ManyToOne()
+	@JoinColumn(name="school_cd",referencedColumnName="cd",insertable=false,updatable=false)
+	private School school;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

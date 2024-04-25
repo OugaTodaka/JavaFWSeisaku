@@ -42,11 +42,13 @@ public class MainController {
 	public ModelAndView student(ModelAndView mav){
 		mav.setViewName("student");
 		List<Student>student = studentService.searchAll();
+		List<School>school = schoolService.searchAll();
 		mav.addObject("student",student);
+		mav.addObject("school",school);
 		return mav;
 	}
 	
-	@GetMapping("/student")
+	@PostMapping("/student")
 	public String studentSeach(Student student,Model model) {
 		model.addAttribute("msg","検索結果");
 		List<Student> result = studentService.search(student.getEnt_year(), student.getSchool_cd(), student.getIs_attend());

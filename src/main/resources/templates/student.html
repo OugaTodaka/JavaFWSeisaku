@@ -17,7 +17,7 @@
 <form>
 	<div class="student_search">
 		<div class="select_2">
-			<select name="ent_year" required>
+			<select name="ent_year">
 			<option value="">-------</option>
 			<script type="text/javascript">
 			for (i = 2015; i < 2031; i++){
@@ -27,7 +27,7 @@
 			</select>
 		</div><br>
 		<div class="select_2">
-			<select name="school_cd" required>
+			<select name="school_cd">
 			<option value="">所属学校を選択</option>
 			<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
 			</select>

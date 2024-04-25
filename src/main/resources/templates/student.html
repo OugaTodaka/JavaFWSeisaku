@@ -12,11 +12,12 @@
 <main>
 
 <p><h2>StudentList</h2></p>
-<a href="/student/add">生徒追加</a>
+<a href="/student/add" class="stuadd">生徒追加</a>
 
 
 <form>
 	<div class="box">
+		<p>入学年度</p>
 		<div class="select_2">
 			<select name="ent_year">
 			<option value="">-------</option>
@@ -27,6 +28,7 @@
 			</script>
 			</select>
 		</div>
+		<p>クラス</p>
 		<div class="select_2">
 			<select name="school_cd">
 			<option value="">所属学校を選択</option>
@@ -34,8 +36,8 @@
 			</select>
 		</div>
 		<div class="form-check">
-		  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-		  <label class="form-check-label" for="flexCheckDefault">在学中</label>
+			<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+			<label class="form-check-label" for="flexCheckDefault">在学中</label>
 		</div>
 		<input type="submit" value="検索" class="submit-button"/><br><br>
 	</div>

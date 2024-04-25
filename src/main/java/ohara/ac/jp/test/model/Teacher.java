@@ -57,7 +57,6 @@ public class Teacher implements UserDetails,Serializable{
 		// TODO 自動生成されたメソッド・スタブ
 		return teacherId;
 	}
-
 //	@Override
 //	public boolean isAccountNonExpired() {
 //		// TODO 自動生成されたメソッド・スタブ

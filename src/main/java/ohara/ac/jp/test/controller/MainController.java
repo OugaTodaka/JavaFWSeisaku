@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.servlet.http.HttpServletRequest;
 import ohara.ac.jp.test.model.School;
 import ohara.ac.jp.test.model.Student;
 import ohara.ac.jp.test.model.Subject;
@@ -30,13 +31,14 @@ public class MainController {
 	private SubjectService subjectService;
 
 	@RequestMapping("")
-	public ModelAndView index(ModelAndView mav) {
-		String username = "a";
+	public ModelAndView index(ModelAndView mav,HttpServletRequest request) {
+		String username = request.getRemoteUser();
+		System.out.println(username);
 		mav.setViewName("index");
 		mav.addObject("username",username);
 		return mav;
 	}
-
+	
 	@RequestMapping("/student")
 	public ModelAndView student(ModelAndView mav){
 		mav.setViewName("student");

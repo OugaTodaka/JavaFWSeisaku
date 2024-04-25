@@ -10,15 +10,16 @@ header{
 sidebar{
 	float:left;
 	width:20%;
+	left:70px;
 	height:400px;
-	text-align:center;
-	padding:20px 0 20px;
+	text-align:left;
+	padding:20px 0 20px 30px;
 }
 	
 main{
 	float:right;
 	width:75%;
-	height:500px;
+	height:600px;
 	margin:8px 0 8px;
 	padding:0 20px 20px;
 	border-left: 1px solid black;
@@ -27,26 +28,43 @@ main h2{
 	background-color: gainsboro;
 	padding: 10px 10px 10px 10px;
 }
+.subadd{
+	margin: 0 0 0 92%;
+}
+.stuadd{
+	margin: 0 0 0 92%;
+}
+.box{
+	height:100px;
+	padding: 0.5em 1em;
+    margin: 1em 0 2em 0;
+    border:1px solid #000;
+    display:flex;
+    border-radius: 9px;
+}
+.box .form-check{
+	margin:30px 28% 0 0;
+}
 
 .red{
 	float:left;
-	height:70px;
+	height:120px;
 	background-color: #CC9999;
-	padding: 20px 40px 20px 40px;
+	padding: 40px 40px 40px 40px;
 	margin: 15px 5px 15px 5px;
 }
 .green{
 	float:left;
-	height:70px;
+	height:120px;
 	background-color: #99CCCC;
 	padding: 20px 40px 20px 40px;
 	margin: 15px 5px 15px 5px;
 }
 .purple{
 	float:left;
-	height:70px;
+	height:120px;
 	background-color: #9999CC;
-	padding: 20px 40px 20px 40px;
+	padding: 40px 40px 40px 40px;
 	margin: 15px 5px 15px 5px;
 }
 
@@ -54,11 +72,11 @@ footer{
 	background-color:gainsboro;
 	clear:left;
 	clear:right;
-	height:50px;
+	height:100px;
 	padding:20px;
 }
 
-.form-text {
+.text {
     height: 2.4em;
     width: 100%;
     box-sizing: border-box;
@@ -72,21 +90,20 @@ footer{
     -moz-appearance: none;
 }
 
-.form-text:focus {
+.text:focus {
     outline: 0;
     box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
 }
 
-.form-select {
+.select {
     position: relative;
 }
 
-.form-select:before {
+.select:before {
     content: "";
     position: absolute;
-    top: 0;
+    top:15px;
     bottom: 0;
-    margin: auto;
     right: 12px;
     width: 8px;
     height: 8px;
@@ -97,11 +114,12 @@ footer{
     pointer-events: none;
 }
 
-.form-select select {
+.select select {
     height: 2.4em;
     width: 100%;
     box-sizing: border-box;
     padding: 0 8px;
+    margin: 0 0 15px 0;
     border-radius: 4px;
     border: none;
     box-shadow: 0 0 0 1px #ccc inset;
@@ -111,19 +129,20 @@ footer{
     cursor: pointer;
 }
 
-.form-select select::-ms-expand {
+.select select::-ms-expand {
     display: none;
 }
 
-.form-select select:focus {
+.select select:focus {
     outline: 0;
     box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
 }
-.form-submit-button {
+.submit-button {
     display: inline-block;
     width: 100px;
+    height:50px;
     padding: 8px 0 8px;
-    margin-top: 8px;
+    margin: 15px 0 15px 0;
     border: none;
     border-radius: 4px;
     background-color: #333;
@@ -136,12 +155,63 @@ footer{
     border: 2px solid transparent;
 }
 
-.form-submit-button:hover {
+.submit-button:hover {
     background-color: #000;
 }
 
-.form-submit-button:focus {
+.submit-button:focus {
     outline: 0;
     background-color: #000;
     border: 2px solid rgb(33, 150, 243);
+}
+
+.table_class {
+  	width: 100%;
+  	height: 65vh;
+}
+.table_class td{
+	text-align: left;
+}
+
+.select_2 {
+    position: relative;
+}
+
+.select_2:before {
+    content: "";
+    position: absolute;
+    top:40px;
+    bottom: 0;
+    left: 180px;
+    width: 8px;
+    height: 8px;
+    box-sizing: border-box;
+    border-top: 2px solid #333;
+    border-right: 2px solid #333;
+    transform: rotate(135deg);
+    pointer-events: none;
+}
+
+.select_2 select {
+    height: 2.4em;
+    width: 200px;
+    box-sizing: border-box;
+    padding: 0 8px;
+    margin: 25px 20px 0 0;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 0 0 1px #ccc inset;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.select_2 select::-ms-expand {
+    display: none;
+}
+
+.select_2 select:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
 }

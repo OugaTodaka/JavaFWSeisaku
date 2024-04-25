@@ -1,11 +1,13 @@
 package ohara.ac.jp.test.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
+import ohara.ac.jp.test.daoimpl.StudentDaoImpl;
 import ohara.ac.jp.test.model.Student;
 import ohara.ac.jp.test.repository.StudentRepository;
 
@@ -15,6 +17,8 @@ public class StudentService {
 	
 	@Autowired
 	private StudentRepository studentRepository;
+	@Autowired
+	private StudentDaoImpl studentDaoImpl;
 	
 	public List<Student> searchAll(){
 		return studentRepository.findAll();
@@ -38,4 +42,15 @@ public class StudentService {
 		return stu;
 	}
 	
+	public List<Student> search(Integer ent_year,String class_num,Boolean is_attend){
+		List<Student> result = new ArrayList<Student>();
+		
+		if ("".equals(ent_year) && "".equals(class_num) && "".equals(is_attend)) {
+			result = 	studentRepository.findAll();
+		}else {
+			result = studentDaoImpl.search(ent_year,class_num,is_attend);
+		}
+		return result;
+		
+	}
 }

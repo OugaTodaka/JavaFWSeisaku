@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,8 +44,18 @@ public class MainController {
 	public ModelAndView student(ModelAndView mav){
 		mav.setViewName("student");
 		List<Student>student = studentService.searchAll();
+		List<School>school = schoolService.searchAll();
 		mav.addObject("student",student);
+		mav.addObject("school",school);
 		return mav;
+	}
+	
+	@PostMapping("/student")
+	public String studentSeach(Student student,Model model) {
+		model.addAttribute("msg","検索結果");
+		List<Student> result = studentService.search(student.getEnt_year(), student.getSchool_cd(), student.getIs_attend());
+		model.addAttribute("student",result);
+		return "student";
 	}
 	
 	@RequestMapping("/subject")

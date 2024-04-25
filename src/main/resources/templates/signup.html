@@ -30,7 +30,7 @@ rel="stylesheet">
             <input type="text" class="form-control" id="name" name="name" required>
         </div>
         <div class="mb-3">
-            <label for="school_cd" class="form-label">学校番号</label>
+            <label for="school_cd" class="form-label">所属学校</label>
             <select class="form-control" name="school_cd" id="school_cd" required>
 				<option value="">所属学校を選択</option>
 				<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>

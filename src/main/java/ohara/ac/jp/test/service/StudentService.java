@@ -43,10 +43,14 @@ public class StudentService {
 	}
 	
 	public List<Student> search(Integer ent_year,String class_num,Boolean is_attend){
+		System.out.println(ent_year);
+		System.out.println(class_num);
+		System.out.println(is_attend);
 		List<Student> result = new ArrayList<Student>();
 		
-		if ("".equals(ent_year) && "".equals(class_num) && "".equals(is_attend)) {
-			result = 	studentRepository.findAll();
+		if (ent_year == null && "".equals(class_num) && is_attend == null) {
+			
+			result = studentRepository.findAll();
 		}else {
 			result = studentDaoImpl.search(ent_year,class_num,is_attend);
 		}

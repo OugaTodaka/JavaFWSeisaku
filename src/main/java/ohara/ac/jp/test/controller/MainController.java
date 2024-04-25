@@ -51,11 +51,13 @@ public class MainController {
 	@PostMapping("/student")
 	public String studentSeach(Student student,Model model) {
 		model.addAttribute("msg","検索結果");
+		System.out.println("メッセージ追加");
 		List<Student> result = studentService.search(student.getEnt_year(), student.getSchool_cd(), student.getIs_attend());
+		System.out.println(result);
 		model.addAttribute("student",result);
 		return "student";
 	}
-	
+
 	@RequestMapping("/subject")
 	public ModelAndView subject(ModelAndView mav){
 		mav.setViewName("subject");

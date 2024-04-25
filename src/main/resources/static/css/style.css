@@ -10,9 +10,10 @@ header{
 sidebar{
 	float:left;
 	width:20%;
+	left:70px;
 	height:400px;
-	text-align:center;
-	padding:20px 0 20px;
+	text-align:left;
+	padding:20px 0 20px 30px;
 }
 	
 main{

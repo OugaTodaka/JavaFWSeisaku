@@ -42,8 +42,9 @@ public class MainController {
 	}
 	
 	@RequestMapping("/student")
-	public ModelAndView student(ModelAndView mav){
+	public ModelAndView student(ModelAndView mav,@AuthenticationPrincipal Teacher teacher){
 		mav.setViewName("student");
+		mav.addObject("username",teacher);
 		List<Student>student = studentService.searchAll();
 		List<School>school = schoolService.searchAll();
 		mav.addObject("student",student);
@@ -63,23 +64,26 @@ public class MainController {
 	}
 
 	@RequestMapping("/subject")
-	public ModelAndView subject(ModelAndView mav){
+	public ModelAndView subject(ModelAndView mav,@AuthenticationPrincipal Teacher teacher){
 		mav.setViewName("subject");
 		List<Subject>subject = subjectService.searchAll();
+		mav.addObject("username",teacher);
 		mav.addObject("subject",subject);
 		return mav;
 	}
 	
 	@RequestMapping("/score")
-	public ModelAndView score(ModelAndView mav) {
+	public ModelAndView score(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+		mav.addObject("username",teacher);
 		mav.setViewName("score");
 		return mav;
 	}
 
 	@GetMapping("/student/add")
-	public ModelAndView studentAdd(ModelAndView model) {
+	public ModelAndView studentAdd(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
 		model.setViewName("studentadd");
 		List<School>list = schoolService.searchAll();
+		model.addObject("username",teacher);
 		model.addObject("school",list);
 		return model;
 	}
@@ -102,7 +106,8 @@ public class MainController {
 	}
 	
 	@GetMapping("/subject/add")
-	public ModelAndView subjectAdd(ModelAndView model) {
+	public ModelAndView subjectAdd(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
+		model.addObject("username",teacher);
 		model.setViewName("subjectadd");
 		return model;
 	}
@@ -122,7 +127,8 @@ public class MainController {
 	}
 	
 	@GetMapping("/score/add")
-	public ModelAndView scoreAdd(ModelAndView mav) {
+	public ModelAndView scoreAdd(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+		mav.addObject("username",teacher);
 		mav.setViewName("scoreadd");
 		return mav;
 	}
@@ -133,7 +139,8 @@ public class MainController {
 	}
 	
 	@GetMapping("/student/edit/{id}")
-	public ModelAndView studentEdit(@PathVariable(name="id")Long id,ModelAndView mav) {
+	public ModelAndView studentEdit(@PathVariable(name="id")Long id,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+		mav.addObject("username",teacher);
 		mav.setViewName("studentedit");
 		Student stu = studentService.get(id);
 		List<School>list = schoolService.searchAll();
@@ -154,7 +161,8 @@ public class MainController {
 	}
 	
 	@GetMapping("/subject/edit/{id}")
-	public ModelAndView subjectEdit(@PathVariable(name="id")Long id,ModelAndView mav) {
+	public ModelAndView subjectEdit(@PathVariable(name="id")Long id,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+		mav.addObject("username",teacher);
 		mav.setViewName("subjectedit");
 		Subject sub = subjectService.get(id);
 		mav.addObject("sub",sub);
@@ -171,7 +179,8 @@ public class MainController {
 	}
 	
 	@GetMapping("/student/delete/{id}")
-	public ModelAndView studentDelete(@PathVariable(name="id")Long id,ModelAndView mav) {
+	public ModelAndView studentDelete(@PathVariable(name="id")Long id,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+		mav.addObject("username",teacher);
 		mav.setViewName("studentdelete");
 		Student stu = studentService.get(id);
 		List<School>list = schoolService.searchAll();
@@ -190,7 +199,8 @@ public class MainController {
 	}
 	
 	@GetMapping("/subject/delete/{id}")
-	public ModelAndView subjectDelete(@PathVariable(name="id")Long id,ModelAndView mav) {
+	public ModelAndView subjectDelete(@PathVariable(name="id")Long id,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+		mav.addObject("username",teacher);
 		mav.setViewName("subjectdelete");
 		Subject sub = subjectService.get(id);
 		mav.addObject("sub",sub);

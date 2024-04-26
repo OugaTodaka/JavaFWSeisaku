@@ -29,8 +29,8 @@
 			</select>
 		</div>
 		<div class="select_2">
-			<select name="school_cd">
-			<option value="">所属学校を選択</option>
+			<select name="class_num">
+			<option value="">クラスを選択</option>
 			<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
 			</select>
 		</div>

@@ -28,16 +28,27 @@
 			</script>
 			</select>
 		</div>
+		
 		<div class="select_2">
-			<select name="School_cd">
+			<select name="class_num">
 			<option value="">クラスを選択</option>
-			<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
+			<option value="101">101</option>
+			<option value="102">102</option>
+			<option value="103">103</option>
+			<option value="201">201</option>
+			<option value="202">202</option>
+			<option value="203">203</option>
+			<option value="301">301</option>
+			<option value="302">302</option>
+			<option value="303">303</option>
 			</select>
 		</div>
+		
 		<div class="form-check">
-			<input class="form-check-input" name="is_attend" type="checkbox" value="True" id="flexCheckDefault">
+			<input class="form-check-input" name="is_attend" type="checkbox" value="true" id="flexCheckDefault">
 			<label class="form-check-label" for="flexCheckDefault">在学中</label>
 		</div>
+		
 		<input type="submit" value="検索" class="submit-button"/><br><br>
 		</div>
 	</div>

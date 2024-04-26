@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import ohara.ac.jp.test.model.School;
 import ohara.ac.jp.test.model.Student;
 import ohara.ac.jp.test.model.Subject;
+import ohara.ac.jp.test.model.Teacher;
 import ohara.ac.jp.test.service.SchoolService;
 import ohara.ac.jp.test.service.StudentService;
 import ohara.ac.jp.test.service.SubjectService;
@@ -32,11 +34,10 @@ public class MainController {
 	private SubjectService subjectService;
 
 	@RequestMapping("")
-	public ModelAndView index(ModelAndView mav,HttpServletRequest request) {
-		String username = request.getRemoteUser();
-		System.out.println(username);
+	public ModelAndView index(ModelAndView mav,HttpServletRequest HttpServletRequest,@AuthenticationPrincipal Teacher teacher) {
+//		System.out.println(username);
+		mav.addObject("username",teacher);
 		mav.setViewName("index");
-		mav.addObject("username",username);
 		return mav;
 	}
 	

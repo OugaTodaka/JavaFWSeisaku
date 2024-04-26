@@ -12,7 +12,8 @@
 <main>
 
 <p><h2>StudentList</h2></p>
-<a href="/student/add">生徒追加</a>
+<a href="/student/add" class="stuadd">生徒追加</a>
+
 
 <form th:action="@{/student}" method="post">
 	<div class="student_search">
@@ -25,16 +26,17 @@
 			}
 			</script>
 			</select>
-		</div><br>
+		</div>
+		<label>クラス</label>
 		<div class="select_2">
 			<select name="school_cd">
 			<option value="">所属学校を選択</option>
 			<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
 			</select>
-		</div><br>
+		</div>
 		<div class="form-check">
-		  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-		  <label class="form-check-label" for="flexCheckDefault">在学中</label>
+			<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+			<label class="form-check-label" for="flexCheckDefault">在学中</label>
 		</div>
 		<input type="submit" value="検索" class="submit-button"/><br><br>
 	</div>

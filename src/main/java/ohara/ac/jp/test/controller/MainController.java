@@ -51,9 +51,10 @@ public class MainController {
 	@PostMapping("/student")
 	public String studentSeach(Student student,Model model) {
 		model.addAttribute("msg","検索結果");
-		System.out.println("メッセージ追加");
+		List<School>school = schoolService.searchAll();
 		List<Student> result = studentService.search(student.getEnt_year(), student.getSchool_cd(), student.getIs_attend());
 		System.out.println(result);
+		model.addAttribute("school",school);
 		model.addAttribute("student",result);
 		return "student";
 	}

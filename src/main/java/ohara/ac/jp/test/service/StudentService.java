@@ -48,7 +48,6 @@ public class StudentService {
 		if (ent_year == null && "".equals(class_num) && is_attend == null) {
 			result = studentRepository.findAll();
 		}else {
-			System.out.println("何かしら1");
 			result = studentDaoImpl.search(ent_year,class_num,is_attend);
 		}
 		return result;

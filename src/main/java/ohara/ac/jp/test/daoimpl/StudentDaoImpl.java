@@ -35,37 +35,27 @@ public class StudentDaoImpl implements StudentDao{
 		boolean is_attendFlg = false;
 		boolean andFlg       = false;
 		
-		System.out.println("何かしら2");
-		
 		if(ent_year != null) {
-			sql.append("b.ent_year = ent_year");
+			sql.append("b.ent_year = :ent_year");
 			ent_yearFlg  = true;
 			andFlg       = true;
-		}
-
-		System.out.println("何かしら3");	
+		}	
 
 		if(!"".equals(class_num)) {
 			if (andFlg) sql.append(" AND ");
-			sql.append("b.class_num = class_num");
+			sql.append("b.class_num = :class_num");
 			class_numFlg  = true;
 			andFlg       = true;
 		}
-
-		System.out.println("何かしら4");
 		
 		if(is_attend != null) {
 			if (andFlg) sql.append(" AND ");
-			sql.append("b.is_attend = is_attend");
+			sql.append("b.is_attend = :is_attend");
 			is_attendFlg  = true;
 			andFlg       = true;
 		}
 		
-		System.out.println("何かしら5");
-		
 		Query query = entityManager.createQuery(sql.toString());
-		
-		System.out.println("何かしら6");
 		
 		if (ent_yearFlg) query.setParameter("ent_year",ent_year);
 		if (class_numFlg) query.setParameter("class_num",class_num);

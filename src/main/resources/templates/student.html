@@ -15,7 +15,9 @@
 <a href="/student/add" class="stuadd">生徒追加</a>
 <form th:action="@{/student}" method="post">
 	<div class="box">
-		<label>入学年度</label><br>
+		<label>入学年度</label>
+		<label>クラス</label>
+		<div class="flex">
 		<div class="select_2">
 			<select name="ent_year">
 			<option value="">-------</option>
@@ -26,7 +28,6 @@
 			</script>
 			</select>
 		</div>
-		<label>クラス</label><br>
 		<div class="select_2">
 			<select name="school_cd">
 			<option value="">所属学校を選択</option>
@@ -38,6 +39,7 @@
 			<label class="form-check-label" for="flexCheckDefault">在学中</label>
 		</div>
 		<input type="submit" value="検索" class="submit-button"/><br><br>
+		</div>
 	</div>
 </form>
 

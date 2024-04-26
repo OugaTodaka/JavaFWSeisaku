@@ -13,10 +13,9 @@
 
 <p><h2>StudentList</h2></p>
 <a href="/student/add" class="stuadd">生徒追加</a>
-
-
 <form th:action="@{/student}" method="post">
-	<div class="student_search">
+	<div class="box">
+		<label>入学年度</label><br>
 		<div class="select_2">
 			<select name="ent_year">
 			<option value="">-------</option>
@@ -27,7 +26,7 @@
 			</script>
 			</select>
 		</div>
-		<label>クラス</label>
+		<label>クラス</label><br>
 		<div class="select_2">
 			<select name="school_cd">
 			<option value="">所属学校を選択</option>

@@ -23,7 +23,7 @@ public class StudentDaoImpl implements StudentDao{
 		this();
 		entityManager = manager;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Student> search(Integer ent_year,String class_num,Boolean is_attend){
@@ -41,7 +41,7 @@ public class StudentDaoImpl implements StudentDao{
 			andFlg       = true;
 		}	
 
-		if(!"".equals(class_num)) {
+		if(class_num != null) {
 			if (andFlg) sql.append(" AND ");
 			sql.append("b.class_num = :class_num");
 			class_numFlg  = true;

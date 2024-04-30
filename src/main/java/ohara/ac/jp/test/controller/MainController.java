@@ -117,10 +117,10 @@ public class MainController {
 	}
 	
 	@PostMapping("/subject/add")
-	public String subjectAddRun(@ModelAttribute Subject sub) {
+	public String subjectAddRun(@ModelAttribute Subject sub,@AuthenticationPrincipal Teacher teacher) {
 		try {
 			sub.setCd(sub.getCd());
-			sub.setSchool_cd("tes");
+			sub.setSchool_cd(teacher.getSchool_cd());
 			sub.setName(sub.getName());
 			subjectService.insert(sub);
 			System.out.println(sub);

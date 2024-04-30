@@ -82,6 +82,18 @@ public class MainController {
 		mav.setViewName("score");
 		return mav;
 	}
+	
+	@PostMapping("/scoresubject")
+	public ModelAndView scoresubject(ModelAndView mav) {
+		mav.setViewName("scoresubject");
+		return mav;
+	}
+	
+	@PostMapping("/scorestudent")
+	public ModelAndView scorestudent(ModelAndView mav) {
+		mav.setViewName("scorestudent");
+		return mav;
+	}
 
 	@GetMapping("/student/add")
 	public ModelAndView studentAdd(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {

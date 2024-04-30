@@ -39,7 +39,7 @@ public class Student implements Serializable{
 	private Integer ent_year;
 
 	@Column(name = "CLASS_NUM")
-	private String class_num;
+	private Integer class_num;
 
 	@Column(name = "IS_ATTEND")
 	private Boolean is_attend;

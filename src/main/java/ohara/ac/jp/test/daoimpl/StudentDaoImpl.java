@@ -26,7 +26,7 @@ public class StudentDaoImpl implements StudentDao{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Student> search(Integer ent_year,String class_num,Boolean is_attend){
+	public List<Student> search(Integer ent_year,Integer class_num,Boolean is_attend){
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT b From Student b WHERE ");
 		

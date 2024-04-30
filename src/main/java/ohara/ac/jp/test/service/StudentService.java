@@ -42,7 +42,7 @@ public class StudentService {
 		return stu;
 	}
 	
-	public List<Student> search(Integer ent_year,String class_num,Boolean is_attend){
+	public List<Student> search(Integer ent_year,Integer class_num,Boolean is_attend){
 		List<Student> result = new ArrayList<Student>();
 		
 		if (ent_year == null && class_num == null && is_attend == null) {

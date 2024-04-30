@@ -59,7 +59,7 @@ public class MainController {
 		List<School>school = schoolService.searchAll();
 		List<Student> result = studentService.search(student.getEnt_year(), student.getClass_num(), student.getIs_attend());
 		System.out.println("入学年度："+student.getEnt_year());
-		System.out.println("学校コード："+student.getClass_num());
+		System.out.println("クラスコード："+student.getClass_num());
 		System.out.println("在学中："+student.getIs_attend());
 		System.out.println(result);
 		model.addAttribute("school",school);

@@ -39,7 +39,7 @@ main h2{
 }
 
 .box{
-	height:100px;
+	height:110px;
 	padding: 0.5em 1em;
     margin: 1em 0 2em 0;
     border:1px solid #000;
@@ -218,6 +218,95 @@ footer{
 }
 
 .select_2 select:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+
+.box_score{
+	height:110px;
+	padding: 0.5em 1em;
+    margin: 1em 0 2em 0;
+    border:1px solid #000;
+    border-radius: 9px;
+}
+.box_score .form-check{
+	margin:10px 20px 0 0;
+}
+.box_score label{
+	margin: 0 108px 0 0;
+}
+.box_score label_2 {
+    margin: 0 80px 0 28px;
+}
+.box_score p{
+    border-right: 1px solid #000;
+    margin: 0 10px 0 10px;
+    padding: 10px 10px 20px 0;
+    height: 100%;
+}
+
+.wide_box_score{
+	height:220px;
+	padding: 0.5em 1em;
+    margin: 1em 0 2em 0;
+    border:1px solid #000;
+    border-radius: 9px;
+}
+.wide_box_score .form-check{
+	margin:10px 20px 0 0;
+}
+.wide_box_score label{
+	margin: 0 108px 0 0;
+}
+.wide_box_score label_2 {
+    margin: 0 80px 0 28px;
+}
+.wide_box_score p{
+    border-right: 1px solid #000;
+    margin: 0 10px 0 10px;
+    padding: 10px 10px 20px 0;
+    height: 100%;
+}
+
+.select_score {
+    position: relative;
+}
+
+.select_score:before {
+    content: "";
+    position: absolute;
+    top:20px;
+    bottom: 0;
+    left: 130px;
+    width: 8px;
+    height: 8px;
+    box-sizing: border-box;
+    border-top: 2px solid #333;
+    border-right: 2px solid #333;
+    transform: rotate(135deg);
+    pointer-events: none;
+}
+
+.select_score select {
+    height: 2.4em;
+    width: 150px;
+    box-sizing: border-box;
+    padding: 0 8px;
+    margin: 5px 20px 0 0;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 0 0 1px #ccc inset;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+.select_score select::-ms-expand {
+    display: none;
+}
+
+.select_score select:focus {
     outline: 0;
     box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
 }

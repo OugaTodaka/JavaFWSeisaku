@@ -10,8 +10,47 @@
 	<header th:replace="header"></header>
 	<div th:replace="sideber"></div>
 <main>
-
-
+<p><h2>成績管理</h2></p>
+<form th:action="@{/student}" method="post">
+	<div class="box_score">
+		<label>入学年度</label>
+		<label>クラス　</label>
+		<label>科目名　</label>
+		<label>回数　　</label>
+		<div class="flex">
+		<div class="select_score">
+			<select name="ent_year">
+			<option value="">-------</option>
+			<script type="text/javascript">
+			for (i = 2015; i < 2031; i++){
+				document.write('<option value="'+i+'">'+i+'</option>');
+			}
+			</script>
+			</select>
+		</div>
+		<div class="select_score">
+			<select name="class_num">
+			<option value="">クラスを選択</option>
+			<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
+			</select>
+		</div>
+		<div class="select_score">
+			<select name="subject">
+			<option value="">科目を選択</option>
+			<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
+			</select>
+		</div>
+		<div class="select_score">
+			<select name="class_num">
+			<option value="">回数</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			</select>
+		</div>
+		<input type="submit" value="検索" class="submit-button"/><br><br>
+		</div>
+	</div>
+</form>
 
 
 	<!--   ここにコンテンツ   -->

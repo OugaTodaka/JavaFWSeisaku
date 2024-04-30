@@ -10,7 +10,7 @@
 	<header th:replace="header"></header>
 	<div th:replace="sideber"></div>
 <main>
-<p><h2>成績参照</h2></p>
+<p><h2>成績参照(科目)</h2></p>
 
 <div class="wide_box_score">
 	<form th:action="@{/student}" method="post">
@@ -60,6 +60,27 @@
 	</form>
 </div>
 
+<p>氏名:<a th:text="${username.name}"></a>(<a th:text=${username.no}></a>)</p>
+<div class="table_class">
+<table class="table" border="1">
+	<thead>
+		<tr>
+			<th>科目名</th>
+			<th>科目コード</th>
+			<th>回数</th>
+			<th>点数</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr th:each="student:${student}" th:if="${student.is_attend}" style="text-align:center;">
+			<td th:text="科目名"></td>
+			<td th:text="科目コード"></td>
+			<td th:text="回数"></td>
+			<td th:text="点数"></td>
+		</tr>
+	</tbody>
+</table>
+</div>
 
 	<!--   ここにコンテンツ   -->
 

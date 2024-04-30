@@ -34,7 +34,12 @@ public class SubjectService {
 	}
 	
 	public Subject get(Long id) {
-		Subject stu = this.subjectRepository.findById(id).orElse(new Subject());
-		return stu;
+		Subject sub = this.subjectRepository.findById(id).orElse(new Subject());
+		return sub;
+	}
+	
+	public List<Subject> getbySchool_cd(String school_cd) {
+		List<Subject>sub = this.subjectRepository.findBySchool_cd(school_cd);
+		return sub;
 	}
 }

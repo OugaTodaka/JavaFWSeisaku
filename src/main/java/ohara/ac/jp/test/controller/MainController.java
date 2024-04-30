@@ -70,7 +70,7 @@ public class MainController {
 	@RequestMapping("/subject")
 	public ModelAndView subject(ModelAndView mav,@AuthenticationPrincipal Teacher teacher){
 		mav.setViewName("subject");
-		List<Subject>subject = subjectService.searchAll();
+		List<Subject>subject = subjectService.getbySchool_cd(teacher.getSchool_cd());
 		mav.addObject("username",teacher);
 		mav.addObject("subject",subject);
 		return mav;

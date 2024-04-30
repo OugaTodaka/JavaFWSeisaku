@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
+import ohara.ac.jp.test.model.ClassNum;
 import ohara.ac.jp.test.model.School;
 import ohara.ac.jp.test.model.Student;
 import ohara.ac.jp.test.model.Subject;
 import ohara.ac.jp.test.model.Teacher;
+import ohara.ac.jp.test.service.ClassNumService;
 import ohara.ac.jp.test.service.SchoolService;
 import ohara.ac.jp.test.service.StudentService;
 import ohara.ac.jp.test.service.SubjectService;
@@ -32,6 +34,9 @@ public class MainController {
 	private SchoolService schoolService;
 	@Autowired
 	private SubjectService subjectService;
+	@Autowired
+	private ClassNumService classNumService;
+	
 
 	@RequestMapping("")
 	public ModelAndView index(ModelAndView mav,HttpServletRequest HttpServletRequest,@AuthenticationPrincipal Teacher teacher) {
@@ -40,7 +45,7 @@ public class MainController {
 		mav.setViewName("index");
 		return mav;
 	}
-	
+
 	@RequestMapping("/student")
 	public ModelAndView student(ModelAndView mav,@AuthenticationPrincipal Teacher teacher){
 		mav.setViewName("student");
@@ -51,7 +56,7 @@ public class MainController {
 		mav.addObject("school",school);
 		return mav;
 	}
-	
+
 	@PostMapping("/student")
 	public String studentSeach(Student student,Model model,@AuthenticationPrincipal Teacher teacher) {
 		model.addAttribute("username",teacher);
@@ -75,22 +80,31 @@ public class MainController {
 		mav.addObject("subject",subject);
 		return mav;
 	}
-	
+
 	@RequestMapping("/score")
 	public ModelAndView score(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.addObject("username",teacher);
+		List<Subject>subject =subjectService.getbySchool_cd(teacher.getSchool_cd());
+		mav.addObject("subject",subject);
 		mav.setViewName("score");
 		return mav;
 	}
-	
+
 	@PostMapping("/scoresubject")
-	public ModelAndView scoresubject(ModelAndView mav) {
+	public ModelAndView scoresubject(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.setViewName("scoresubject");
+		mav.addObject("username",teacher);
+		List<School>school = schoolService.searchAll();
+		List<Subject>subject =subjectService.searchAll();
+		List<ClassNum>cla = classNumService.getbySchool_cd(teacher.getSchool_cd());
+		mav.addObject("school",school);
+		mav.addObject("subject",subject);
+		mav.addObject("class",cla);
 		return mav;
 	}
-	
+
 	@PostMapping("/scorestudent")
-	public ModelAndView scorestudent(ModelAndView mav) {
+	public ModelAndView scorestudent(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.setViewName("scorestudent");
 		return mav;
 	}
@@ -120,14 +134,14 @@ public class MainController {
 			return "addError";
 		}
 	}
-	
+
 	@GetMapping("/subject/add")
 	public ModelAndView subjectAdd(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
 		model.addObject("username",teacher);
 		model.setViewName("subjectadd");
 		return model;
 	}
-	
+
 	@PostMapping("/subject/add")
 	public String subjectAddRun(@ModelAttribute Subject sub,@AuthenticationPrincipal Teacher teacher) {
 		try {
@@ -141,19 +155,19 @@ public class MainController {
 			return "addError";
 		}
 	}
-	
+
 	@GetMapping("/score/add")
 	public ModelAndView scoreAdd(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.addObject("username",teacher);
 		mav.setViewName("scoreadd");
 		return mav;
 	}
-	
+
 	@PostMapping("/score/add")
 	public String scoreAddRun(ModelAndView mav) {
 		return "redirect:/score";
 	}
-	
+
 	@GetMapping("/student/edit/{id}")
 	public ModelAndView studentEdit(@PathVariable(name="id")Long id,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.addObject("username",teacher);

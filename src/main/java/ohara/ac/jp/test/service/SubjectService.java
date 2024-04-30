@@ -20,7 +20,6 @@ public class SubjectService {
 		return subjectRepository.findAll();
 	}
 
-	
 	public void insert(Subject subject) {
 		subjectRepository.save(subject);
 	}

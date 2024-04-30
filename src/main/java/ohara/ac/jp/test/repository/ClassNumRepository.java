@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import ohara.ac.jp.test.model.Subject;
+import ohara.ac.jp.test.model.ClassNum;
 
 @Repository
-public interface SubjectRepository extends JpaRepository<Subject,Long>{
-	public List<Subject> findBySchool_cd(String school_cd);
+public interface ClassNumRepository extends JpaRepository<ClassNum,Long>{
+	public List<ClassNum> findBySchool_cd(String school_cd);
 }

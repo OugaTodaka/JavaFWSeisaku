@@ -24,7 +24,6 @@ public class StudentService {
 		return studentRepository.findAll();
 	}
 
-	
 	public void insert(Student student) {
 		studentRepository.save(student);
 	}

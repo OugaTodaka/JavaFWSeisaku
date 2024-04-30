@@ -40,7 +40,7 @@
 			<div class="select_score">
 				<select name="subject">
 				<option value="">科目を選択</option>
-				<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
+				<option th:each="subject:${subject}" th:inline="text" th:value="${subject.cd}">[[${subject.name}]]</option>
 				</select>
 			</div>
 			<input type="submit" value="検索" class="submit-button"/><br><br>
@@ -60,7 +60,7 @@
 	</form>
 </div>
 
-<p>氏名:<a th:text="${username.name}"></a>(<a th:text=${username.no}></a>)</p>
+<p>科目名:<a th:text="${subject.name}"></a>(<a th:text=${username.no}></a>)</p>
 <div class="table_class">
 <table class="table" border="1">
 	<thead>
@@ -81,9 +81,6 @@
 	</tbody>
 </table>
 </div>
-
-	<!--   ここにコンテンツ   -->
-
 
 </main>
 <div>

@@ -239,14 +239,13 @@ footer{
     margin: 0 80px 0 28px;
 }
 .box_score p{
-    border-right: 1px solid #000;
     margin: 0 10px 0 10px;
     padding: 10px 10px 20px 0;
     height: 100%;
 }
 
 .wide_box_score{
-	height:220px;
+	height:260px;
 	padding: 0.5em 1em;
     margin: 1em 0 2em 0;
     border:1px solid #000;
@@ -262,10 +261,14 @@ footer{
     margin: 0 80px 0 28px;
 }
 .wide_box_score p{
-    border-right: 1px solid #000;
     margin: 0 10px 0 10px;
     padding: 10px 10px 20px 0;
     height: 100%;
+}
+.wide_box_score .border_line{
+	border-bottom: 1px solid #000;
+	width:100%;
+	margin:0 0 15px 0;
 }
 
 .select_score {
@@ -309,4 +312,18 @@ footer{
 .select_score select:focus {
     outline: 0;
     box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
+}
+
+.text_score {
+    height: 2.4em;
+    width: 70%;
+    box-sizing: border-box;
+    padding-left:8px;
+    margin:5px 15px 5px 0;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 0 0 1px #ccc inset;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }

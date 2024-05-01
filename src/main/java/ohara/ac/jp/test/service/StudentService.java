@@ -41,6 +41,11 @@ public class StudentService {
 		return stu;
 	}
 	
+	public Student getbyNo(String no){
+		Student stu = this.studentRepository.findByNo(no);
+		return stu;
+	}
+	
 	public List<Student> search(Integer ent_year,Integer class_num,Boolean is_attend){
 		List<Student> result = new ArrayList<Student>();
 		

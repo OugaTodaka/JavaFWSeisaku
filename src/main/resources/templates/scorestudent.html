@@ -13,7 +13,7 @@
 <p><h2>成績参照(学生)</h2></p>
 
 <div class="wide_box_score">
-	<form th:action="@{/student}" method="post">
+	<form th:action="@{/scoresubject}" method="post">
 		<a>　　　　</a>
 		<label_2>入学年度</label_2>
 		<label_2>クラス　</label_2>
@@ -38,9 +38,9 @@
 				</select>
 			</div>
 			<div class="select_score">
-				<select name="subject">
+				<select name="id">
 				<option value="">科目を選択</option>
-				<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
+				<option th:each="subject:${subject}" th:inline="text" th:value="${subject.id}">[[${subject.name}]]</option>
 				</select>
 			</div>
 			<input type="submit" value="検索" class="submit-button"/><br><br>
@@ -49,18 +49,18 @@
 	
 	<label class="border_line">　</label>
 	
-	<form th:action="@{/student}" method="post">
+	<form th:action="@{/scorestudent}" method="post">
 		<a>　　　　</a>
 		<label_2>学籍番号</label_2>
 		<div class="flex">
 			<p>学生情報</p>
-			<input type="text" name="name" class="text_score" maxlength="10" placeholder="学籍番号を入力してください"/>
+			<input type="text" name="no" class="text_score" maxlength="10" placeholder="学籍番号を入力してください"/>
 			<input type="submit" value="検索" class="submit-button"/><br><br>
 		</div>
 	</form>
 </div>
 
-<p>科目:<a th:text="科目名"></a></p>
+<p>氏名：<a th:text="${stu.name}"></a>(<a th:text="${stu.no}"></a>)</p>
 <div class="table_class">
 <table class="table" border="1">
 	<thead>
@@ -74,7 +74,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr th:each="student:${student}" th:if="${student.is_attend}" style="text-align:center;">
+		<tr th:each="student:${stu}" style="text-align:center;">
 			<td th:text="${student.ent_year}"></td>
 			<td th:text="${student.class_num}"></td>
 			<td th:text="${student.no}"></td>
@@ -85,9 +85,6 @@
 	</tbody>
 </table>
 </div>
-
-	<!--   ここにコンテンツ   -->
-
 
 </main>
 <div>

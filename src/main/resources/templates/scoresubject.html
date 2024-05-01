@@ -13,7 +13,7 @@
 <p><h2>成績参照(科目)</h2></p>
 
 <div class="wide_box_score">
-	<form th:action="@{/student}" method="post">
+	<form th:action="@{/scoresubject}" method="post">
 		<a>　　　　</a>
 		<label_2>入学年度</label_2>
 		<label_2>クラス　</label_2>
@@ -38,7 +38,7 @@
 				</select>
 			</div>
 			<div class="select_score">
-				<select name="subject">
+				<select name="id">
 				<option value="">科目を選択</option>
 				<option th:each="subject:${subject}" th:inline="text" th:value="${subject.id}">[[${subject.name}]]</option>
 				</select>
@@ -49,12 +49,12 @@
 	
 	<label class="border_line">　</label>
 	
-	<form th:action="@{/student}" method="post">
+	<form th:action="@{/scorestudent}" method="post">
 		<a>　　　　</a>
 		<label_2>学籍番号</label_2>
 		<div class="flex">
 			<p>学生情報</p>
-			<input type="text" name="name" class="text_score" maxlength="10" placeholder="学籍番号を入力してください"/>
+			<input type="text" name="no" class="text_score" maxlength="10" placeholder="学籍番号を入力してください"/>
 			<input type="submit" value="検索" class="submit-button"/><br><br>
 		</div>
 	</form>

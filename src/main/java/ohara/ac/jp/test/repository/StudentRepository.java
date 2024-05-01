@@ -7,5 +7,5 @@ import ohara.ac.jp.test.model.Student;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student,Long>{
-	
+	public Student findByNo(String no);
 }

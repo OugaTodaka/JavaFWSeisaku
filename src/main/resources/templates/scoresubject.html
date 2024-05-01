@@ -34,13 +34,13 @@
 			<div class="select_score">
 				<select name="class_num">
 					<option value="">クラスを選択</option>
-					<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
+					<option th:each="class:${class}" th:inline="text" th:value="${class.class_num}">[[${class.class_num}]]</option>
 				</select>
 			</div>
 			<div class="select_score">
 				<select name="subject">
 				<option value="">科目を選択</option>
-				<option th:each="subject:${subject}" th:inline="text" th:value="${subject.cd}">[[${subject.name}]]</option>
+				<option th:each="subject:${subject}" th:inline="text" th:value="${subject.id}">[[${subject.name}]]</option>
 				</select>
 			</div>
 			<input type="submit" value="検索" class="submit-button"/><br><br>
@@ -60,20 +60,22 @@
 	</form>
 </div>
 
-<p>科目名:<a th:text="${subject.name}"></a>(<a th:text=${username.no}></a>)</p>
+<p>科目名:<a th:text="${sub.name}"></a></p>
 <div class="table_class">
 <table class="table" border="1">
 	<thead>
 		<tr>
-			<th>科目名</th>
-			<th>科目コード</th>
-			<th>回数</th>
-			<th>点数</th>
+			<th>入学年度</th>
+			<th>クラス</th>
+			<th>学生番号</th>
+			<th>氏名</th>
+			<th>１回</th>
+			<th>2回</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr th:each="student:${student}" th:if="${student.is_attend}" style="text-align:center;">
-			<td th:text="科目名"></td>
+			<td th:text="${student.ent_year}"></td>
 			<td th:text="科目コード"></td>
 			<td th:text="回数"></td>
 			<td th:text="点数"></td>

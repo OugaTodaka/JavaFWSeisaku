@@ -34,21 +34,13 @@
 			<div class="select_score">
 				<select name="class_num">
 					<option value="">クラスを選択</option>
-					<option value="101">101</option>
-					<option value="102">102</option>
-					<option value="103">103</option>
-					<option value="201">201</option>
-					<option value="202">202</option>
-					<option value="203">203</option>
-					<option value="301">301</option>
-					<option value="302">302</option>
-					<option value="303">303</option>
+					<option th:each="class:${class}" th:inline="text" th:value="${class.class_num}">[[${class.class_num}]]</option>
 				</select>
 			</div>
 			<div class="select_score">
-				<select name="subject">
+				<select name="id">
 				<option value="">科目を選択</option>
-				<option th:each="subject:${subject}" th:inline="text" th:value="${subject.cd}">[[${subject.name}]]</option>
+				<option th:each="subject:${subject}" th:inline="text" th:value="${subject.id}">[[${subject.name}]]</option>
 				</select>
 			</div>
 			<input type="submit" value="検索" class="submit-button"/><br><br>

@@ -85,20 +85,25 @@ public class MainController {
 	public ModelAndView score(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.addObject("username",teacher);
 		List<Subject>subject =subjectService.getbySchool_cd(teacher.getSchool_cd());
+		List<ClassNum>cla = classNumService.getbySchool_cd(teacher.getSchool_cd());
 		mav.addObject("subject",subject);
+		mav.addObject("class",cla);
 		mav.setViewName("score");
 		return mav;
 	}
 
 	@PostMapping("/scoresubject")
-	public ModelAndView scoresubject(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+	public ModelAndView scoresubject(@ModelAttribute Subject sub,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.setViewName("scoresubject");
 		mav.addObject("username",teacher);
+		Subject scoresub = subjectService.get(sub.getId());
+		System.out.println(scoresub);
 		List<School>school = schoolService.searchAll();
-		List<Subject>subject =subjectService.searchAll();
+		List<Subject>subject =subjectService.getbySchool_cd(teacher.getSchool_cd());
 		List<ClassNum>cla = classNumService.getbySchool_cd(teacher.getSchool_cd());
 		mav.addObject("school",school);
 		mav.addObject("subject",subject);
+		mav.addObject("sub",scoresub);
 		mav.addObject("class",cla);
 		return mav;
 	}

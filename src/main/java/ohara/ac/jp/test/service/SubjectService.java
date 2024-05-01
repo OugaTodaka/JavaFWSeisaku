@@ -41,4 +41,9 @@ public class SubjectService {
 		List<Subject>sub = this.subjectRepository.findBySchool_cd(school_cd);
 		return sub;
 	}
+	
+	public List<Subject> getbyCd(String cd) {
+		List<Subject>sub = this.subjectRepository.findByCd(cd);
+		return sub;
+	}
 }

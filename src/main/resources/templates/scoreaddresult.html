@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <link th:href="@{/css/style.css}" rel="stylesheet" />
 <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css}" rel="stylesheet">
-<title>成績管理システム</title>
+<title>得点管理システム</title>
 </head>
 <body>
 	<header th:replace="header"></header>
 	<div th:replace="sideber"></div>
 <main>
 <p><h2>成績管理</h2></p>
-<form th:action="@{/scorestudent}" method="post">
+<form th:action="@{/score/add}" method="post">
 	<div class="box_score">
 		<label>入学年度</label>
 		<label>クラス　</label>
@@ -55,7 +55,31 @@
 	</div>
 </form>
 
-
+<div class="table_class">
+<table class="table" border="1">
+	<thead>
+		<tr>
+			<th>入学年度</th>
+			<th>クラス</th>
+			<th>学生番号</th>
+			<th>名前</th>
+			<th>点数</th>
+		</tr>
+	</thead>
+	<tbody>
+	<form action="">
+		<tr th:each="student:${student}" th:if="${student.is_attend}" style="text-align:center;">
+			<td th:text="${student.ent_year}"></td>
+			<td th:text="${student.class_num}"></td>
+			<td th:text="${student.no}"></td>
+			<td th:text="${student.name}"></td>
+			<td><input type="text" name="name" class="text_score_add" maxlength="10" placeholder=""/></td>
+		</tr>
+		<input type="submit" value="登録して終了" class="submit-button"/><br><br>
+	</form>
+	</tbody>
+</table>
+</div>
 	<!--   ここにコンテンツ   -->
 
 

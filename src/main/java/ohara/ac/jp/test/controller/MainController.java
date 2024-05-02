@@ -144,10 +144,16 @@ public class MainController {
 			stu.setSchool_cd(stu.getSchool_cd());
 			studentService.insert(stu);
 			System.out.println("登録："+stu);
-			return "redirect:/student";
+			return "redirect:/student/add/success";
 		}catch(DataIntegrityViolationException e){
 			return "addError";
 		}
+	}
+	@RequestMapping("/student/add/success")
+	public ModelAndView studentAddSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher, Student stu) {
+		model.addObject("username",teacher);
+		model.setViewName("studentaddsuccess");
+		return model;
 	}
 
 	@GetMapping("/subject/add")
@@ -165,10 +171,16 @@ public class MainController {
 			sub.setName(sub.getName());
 			subjectService.insert(sub);
 			System.out.println(sub);
-			return "redirect:/subject";
+			return "redirect:/subject/add/success";
 		}catch(DataIntegrityViolationException e) {
 			return "addError";
 		}
+	}
+	@RequestMapping("/subject/add/success")
+	public ModelAndView subjectAddSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
+		model.addObject("username",teacher);
+		model.setViewName("subjectaddsuccess");
+		return model;
 	}
 
 	@GetMapping("/score/add")
@@ -180,7 +192,14 @@ public class MainController {
 
 	@PostMapping("/score/add")
 	public String scoreAddRun(ModelAndView mav) {
-		return "redirect:/score";
+		return "redirect:/score/add/success";
+	}
+	
+	@RequestMapping("/score/add/success")
+	public ModelAndView scoreAddSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
+		model.addObject("username",teacher);
+		model.setViewName("scoreaddsuccess");
+		return model;
 	}
 
 	@GetMapping("/student/edit/{id}")
@@ -202,7 +221,14 @@ public class MainController {
 		stu.setSchool_cd(form.getSchool_cd());
 		studentService.update(stu);
 		System.out.println("更新："+stu);
-		return "redirect:/student";
+		return "redirect:/student/edit/success";
+	}
+	
+	@RequestMapping("/student/edit/success")
+	public ModelAndView studentEditSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
+		model.addObject("username",teacher);
+		model.setViewName("studenteditsuccess");
+		return model;
 	}
 	
 	@GetMapping("/subject/edit/{id}")
@@ -220,7 +246,14 @@ public class MainController {
 		sub.setName(form.getName());
 		subjectService.update(sub);
 		System.out.println("更新："+sub);
-		return "redirect:/subject";
+		return "redirect:/subjec/edit/success";
+	}
+	
+	@RequestMapping("/subject/edit/success")
+	public ModelAndView subjectEditSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
+		model.addObject("username",teacher);
+		model.setViewName("subjecteditsuccess");
+		return model;
 	}
 	
 	@GetMapping("/student/delete/{id}")
@@ -240,7 +273,14 @@ public class MainController {
 		stu.setIs_attend(false);
 		studentService.update(stu);
 		System.out.println("削除："+stu);
-		return "redirect:/student";
+		return "redirect:/student/delete/success";
+	}
+	
+	@RequestMapping("/student/delete/success")
+	public ModelAndView studentDeleteSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
+		model.addObject("username",teacher);
+		model.setViewName("studentdeletesuccess");
+		return model;
 	}
 	
 	@GetMapping("/subject/delete/{id}")
@@ -257,6 +297,13 @@ public class MainController {
 		Subject sub = subjectService.get(id);
 		subjectService.delete(id);
 		System.out.println("削除："+sub);
-		return "redirect:/subject";
+		return "redirect:/subjec/delete/success";
+	}
+	
+	@RequestMapping("/subject/delete/success")
+	public ModelAndView subjectDeleteSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
+		model.addObject("username",teacher);
+		model.setViewName("subjectdeletesuccess");
+		return model;
 	}
 }

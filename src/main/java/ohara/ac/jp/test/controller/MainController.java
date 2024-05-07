@@ -246,7 +246,7 @@ public class MainController {
 		sub.setName(form.getName());
 		subjectService.update(sub);
 		System.out.println("更新："+sub);
-		return "redirect:/subjec/edit/success";
+		return "redirect:/subject/edit/success";
 	}
 	
 	@RequestMapping("/subject/edit/success")
@@ -297,7 +297,7 @@ public class MainController {
 		Subject sub = subjectService.get(id);
 		subjectService.delete(id);
 		System.out.println("削除："+sub);
-		return "redirect:/subjec/delete/success";
+		return "redirect:/subject/delete/success";
 	}
 	
 	@RequestMapping("/subject/delete/success")

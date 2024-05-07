@@ -50,14 +50,13 @@
 				</select>
 			</div>
 			<input type="submit" value="検索" class="submit-button"/><br><br>
-		</div>
-		
+		</div>	
 	</div>
 </form>
 
+<form th:action="@{/score/add/success}" method="post">
 <div class="table_class">
-<table class="table" border="1">
-
+	<table class="table" border="1">
 		<thead>
 			<tr>
 				<th>入学年度</th>
@@ -67,7 +66,6 @@
 				<th>点数</th>
 			</tr>
 		</thead>
-	<form th:action="@{/score/add/success}" method="post">
 		<tbody>
 			<tr th:each="student:${student}" th:if="${student.is_attend}" style="text-align:center;">
 				<td th:text="${student.ent_year}"></td>
@@ -76,12 +74,13 @@
 				<td th:text="${student.name}"></td>
 				<td><input type="text" name="name" class="text_score_add" maxlength="10" placeholder=""/></td>
 			</tr>
-			<input type="submit" value="登録して終了" class="submit-button"/><br><br>
 		</tbody>
-	</form>
-</table>
-
+	</table>
 </div>
+<input type="submit" value="登録して終了" class="submit-button"/>
+
+</form>
+
 
 </main>
 <div>

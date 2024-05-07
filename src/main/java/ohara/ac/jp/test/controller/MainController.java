@@ -186,20 +186,39 @@ public class MainController {
 	@GetMapping("/score/add")
 	public ModelAndView scoreAdd(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.addObject("username",teacher);
+		List<Subject>subject =subjectService.getbySchool_cd(teacher.getSchool_cd());
+		List<ClassNum>cla = classNumService.getbySchool_cd(teacher.getSchool_cd());
+		mav.addObject("subject",subject);
+		mav.addObject("class",cla);
 		mav.setViewName("scoreadd");
 		return mav;
 	}
 
 	@PostMapping("/score/add")
-	public String scoreAddRun(ModelAndView mav) {
-		return "redirect:/score/add/success";
+	public String scoreAddRun(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+		return "redirect:/score/add/result";
+	}
+	
+	@RequestMapping("/score/add/result")
+	public ModelAndView scoreAddResult(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+		mav.addObject("username",teacher);
+		List<Subject>subject =subjectService.getbySchool_cd(teacher.getSchool_cd());
+		List<ClassNum>cla = classNumService.getbySchool_cd(teacher.getSchool_cd());
+		
+		List<Student>student = studentService.searchAll();
+		mav.addObject("student",student);
+
+		mav.addObject("subject",subject);
+		mav.addObject("class",cla);
+		mav.setViewName("scoreaddresult");
+		return mav;
 	}
 	
 	@RequestMapping("/score/add/success")
-	public ModelAndView scoreAddSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
-		model.addObject("username",teacher);
-		model.setViewName("scoreaddsuccess");
-		return model;
+	public ModelAndView scoreAddSuccess(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+		mav.addObject("username",teacher);
+		mav.setViewName("scoreaddsuccess");
+		return mav;
 	}
 
 	@GetMapping("/student/edit/{id}")

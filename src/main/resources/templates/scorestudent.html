@@ -34,7 +34,7 @@
 			<div class="select_score">
 				<select name="class_num">
 					<option value="">クラスを選択</option>
-					<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
+					<option th:each="class:${class}" th:inline="text" th:value="${class.class_num}">[[${class.class_num}]]</option>
 				</select>
 			</div>
 			<div class="select_score">

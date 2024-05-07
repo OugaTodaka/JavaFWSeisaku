@@ -11,7 +11,7 @@
 	<div th:replace="sideber"></div>
 <main>
 <p><h2>成績管理</h2></p>
-<form th:action="@{/scorestudent}" method="post">
+<form th:action="@{/score/add/result}" method="post">
 	<div class="box_score">
 		<label>入学年度</label>
 		<label>クラス　</label>
@@ -33,13 +33,13 @@
 			<div class="select_score">
 				<select name="class_num">
 				<option value="">クラスを選択</option>
-				<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
+				<option th:each="class:${class}" th:inline="text" th:value="${class.class_num}">[[${class.class_num}]]</option>
 				</select>
 			</div>
 			<div class="select_score">
 				<select name="subject">
 				<option value="">科目を選択</option>
-				<option th:each="school:${school}" th:inline="text" th:value="${school.cd}">[[${school.name}]]</option>
+				<option th:each="subject:${subject}" th:inline="text" th:value="${subject.cd}">[[${subject.name}]]</option>
 				</select>
 			</div>
 			<div class="select_score">

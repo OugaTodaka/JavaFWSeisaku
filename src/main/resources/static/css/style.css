@@ -352,3 +352,16 @@ footer{
     padding: 5px;
     text-align: center
 }
+
+.log_box {
+    display: block;
+    height: auto;
+    padding: 0.5em 1em;
+    margin: 1em 25% 2em 25%;
+    border: 1px solid #000;
+    border-radius: 9px;
+}
+.log_box h2{
+	background-color: gainsboro;
+	padding: 10px 0 10px 0;	
+}

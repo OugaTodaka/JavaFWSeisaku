@@ -134,7 +134,7 @@ public class MainController {
 	}
 
 	@PostMapping("/student/add")
-	public String studentAddRun(@ModelAttribute Student stu) {
+	public String studentAddRun(Model model,@ModelAttribute Student stu,@AuthenticationPrincipal Teacher teacher) {
 		try {
 			stu.setNo(stu.getNo());
 			stu.setName(stu.getName());
@@ -146,6 +146,7 @@ public class MainController {
 			System.out.println("登録："+stu);
 			return "redirect:/student/add/success";
 		}catch(DataIntegrityViolationException e){
+			model.addAttribute("username",teacher);
 			return "addError";
 		}
 	}
@@ -164,7 +165,7 @@ public class MainController {
 	}
 
 	@PostMapping("/subject/add")
-	public String subjectAddRun(@ModelAttribute Subject sub,@AuthenticationPrincipal Teacher teacher) {
+	public String subjectAddRun(Model model,@ModelAttribute Subject sub,@AuthenticationPrincipal Teacher teacher) {
 		try {
 			sub.setCd(sub.getCd());
 			sub.setSchool_cd(teacher.getSchool_cd());
@@ -173,6 +174,7 @@ public class MainController {
 			System.out.println(sub);
 			return "redirect:/subject/add/success";
 		}catch(DataIntegrityViolationException e) {
+			model.addAttribute("username",teacher);
 			return "addError";
 		}
 	}

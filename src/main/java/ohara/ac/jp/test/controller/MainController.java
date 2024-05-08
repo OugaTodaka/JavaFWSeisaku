@@ -121,6 +121,25 @@ public class MainController {
 		mav.addObject("subject",subject);
 		mav.addObject("stu",scorestu);
 		mav.addObject("class",cla);
+		if (scorestu != null) {
+			return mav;
+
+		}else {
+
+			mav.setViewName("redirect:/score/searchfaild");
+			return mav;
+			}
+	}
+	
+	@RequestMapping("/score/searchfaild")
+	public ModelAndView searchFaild(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+		mav.addObject("notfound","何も無がったッ...!!");
+		mav.setViewName("score");
+		mav.addObject("username",teacher);
+		List<Subject>subject =subjectService.getbySchool_cd(teacher.getSchool_cd());
+		List<ClassNum>cla = classNumService.getbySchool_cd(teacher.getSchool_cd());
+		mav.addObject("subject",subject);
+		mav.addObject("class",cla);
 		return mav;
 	}
 

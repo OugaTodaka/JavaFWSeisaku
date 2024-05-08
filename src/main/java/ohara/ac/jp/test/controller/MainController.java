@@ -176,6 +176,7 @@ public class MainController {
 			return "addError";
 		}
 	}
+
 	@RequestMapping("/subject/add/success")
 	public ModelAndView subjectAddSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
 		model.addObject("username",teacher);
@@ -196,14 +197,17 @@ public class MainController {
 
 	@PostMapping("/score/add")
 	public String scoreAddRun(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
-		return "redirect:/score/add/result";
+		return "redirect:/score/add/success";
 	}
 	
-	@RequestMapping("/score/add/result")
-	public ModelAndView scoreAddResult(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+	@PostMapping("/score/add/result")
+	public ModelAndView scoreAddResult(ModelAndView mav,@ModelAttribute Subject sub,@AuthenticationPrincipal Teacher teacher) {
 		mav.addObject("username",teacher);
 		List<Subject>subject =subjectService.getbySchool_cd(teacher.getSchool_cd());
 		List<ClassNum>cla = classNumService.getbySchool_cd(teacher.getSchool_cd());
+		
+		Subject choicesub = subjectService.get(sub.getId());
+		mav.addObject("sub",choicesub);
 		
 		List<Student>student = studentService.searchAll();
 		mav.addObject("student",student);

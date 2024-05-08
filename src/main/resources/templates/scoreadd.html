@@ -37,9 +37,9 @@
 				</select>
 			</div>
 			<div class="select_score">
-				<select name="subject">
+				<select name="id">
 				<option value="">科目を選択</option>
-				<option th:each="subject:${subject}" th:inline="text" th:value="${subject.cd}">[[${subject.name}]]</option>
+				<option th:each="subject:${subject}" th:inline="text" th:value="${subject.id}">[[${subject.name}]]</option>
 				</select>
 			</div>
 			<div class="select_score">
@@ -54,10 +54,6 @@
 		
 	</div>
 </form>
-
-
-	<!--   ここにコンテンツ   -->
-
 
 </main>
 <div>

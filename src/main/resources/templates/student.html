@@ -63,6 +63,7 @@
 			<th>入学年度</th>
 			<th>クラス</th>
 			<th>学校</th>
+			<th>在籍</th>
 			<th colspan="2">編集</th>
 		</tr>
 	</thead>
@@ -73,6 +74,8 @@
 			<td th:text="${student.ent_year}"></td>
 			<td th:text="${student.class_num}"></td>
 			<td th:text="${student.school.name}"></td>
+			<td th:if="${student.is_attend}">〇</td>
+			<td th:if="${!student.is_attend}">罰</td>
 			<td><a th:href="@{/student/edit/{id}(id=${student.id})}">こうしん</a></td>
 			<td><a th:href="@{/student/delete/{id}(id=${student.id})}">削除</a></td>
 		</tr>

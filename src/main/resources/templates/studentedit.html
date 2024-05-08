@@ -13,7 +13,7 @@
 <h1>データ更新</h1>
 <form th:object="${stu}" th:action="'/student/edit/'+${id}" method="post">
 	<p>学生番号：<input type="text" name="no" th:value="${stu.no}" disabled></p>
-	<p>氏　名：<input type="text" name="name" th:value="${stu.name}"></p>
+	<p>氏　名：<input type="text" name="name" maxlength="10" th:value="${stu.name}"></p>
 	<p>入学年度：<input type="text" name="ent_year" th:value="${stu.ent_year}" disabled></p>
 	<p>クラス：<input type="text" name="class_num" maxlength="3" pattern="^[0-9]+$" placeholder="クラス（数字３桁）" th:value="${stu.class_num}"></p>
 	<p>所属学校：

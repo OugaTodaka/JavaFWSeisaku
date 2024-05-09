@@ -99,7 +99,7 @@ public class MainController {
 		Subject scoresub = subjectService.get(sub.getId());
 		System.out.println(scoresub);
 		List<School>school = schoolService.searchAll();
-		List<Subject>subject =subjectService.getbySchool_cd(teacher.getSchool_cd());
+		List<Subject>subject = subjectService.getbySchool_cd(teacher.getSchool_cd());
 		List<ClassNum>cla = classNumService.getbySchool_cd(teacher.getSchool_cd());
 		mav.addObject("school",school);
 		mav.addObject("subject",subject);
@@ -130,10 +130,10 @@ public class MainController {
 			return mav;
 			}
 	}
-	
+
 	@RequestMapping("/score/searchfaild")
 	public ModelAndView searchFaild(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
-		mav.addObject("notfound","何も無がったッ...!!");
+		mav.addObject("notfound","・・・なにも!!! な゛かったッ...!!!!");
 		mav.setViewName("score");
 		mav.addObject("username",teacher);
 		List<Subject>subject =subjectService.getbySchool_cd(teacher.getSchool_cd());
@@ -169,6 +169,7 @@ public class MainController {
 			return "addError";
 		}
 	}
+
 	@RequestMapping("/student/add/success")
 	public ModelAndView studentAddSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher, Student stu) {
 		model.addObject("username",teacher);
@@ -220,7 +221,7 @@ public class MainController {
 	public String scoreAddRun(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		return "redirect:/score/add/success";
 	}
-	
+
 	@PostMapping("/score/add/result")
 	public ModelAndView scoreAddResult(ModelAndView mav,@ModelAttribute Subject sub,@AuthenticationPrincipal Teacher teacher) {
 		mav.addObject("username",teacher);
@@ -238,7 +239,7 @@ public class MainController {
 		mav.setViewName("scoreaddresult");
 		return mav;
 	}
-	
+
 	@RequestMapping("/score/add/success")
 	public ModelAndView scoreAddSuccess(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.addObject("username",teacher);
@@ -267,14 +268,14 @@ public class MainController {
 		System.out.println("更新："+stu);
 		return "redirect:/student/edit/success";
 	}
-	
+
 	@RequestMapping("/student/edit/success")
 	public ModelAndView studentEditSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
 		model.addObject("username",teacher);
 		model.setViewName("studenteditsuccess");
 		return model;
 	}
-	
+
 	@GetMapping("/subject/edit/{id}")
 	public ModelAndView subjectEdit(@PathVariable(name="id")Long id,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.addObject("username",teacher);
@@ -292,14 +293,14 @@ public class MainController {
 		System.out.println("更新："+sub);
 		return "redirect:/subject/edit/success";
 	}
-	
+
 	@RequestMapping("/subject/edit/success")
 	public ModelAndView subjectEditSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
 		model.addObject("username",teacher);
 		model.setViewName("subjecteditsuccess");
 		return model;
 	}
-	
+
 	@GetMapping("/student/delete/{id}")
 	public ModelAndView studentDelete(@PathVariable(name="id")Long id,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.addObject("username",teacher);
@@ -310,7 +311,7 @@ public class MainController {
 		mav.addObject("stu",stu);
 		return mav;
 	}
-	
+
 	@PostMapping("/student/delete/{id}")
 	public String studentDeleteRun(@PathVariable(name="id")Long id) {
 		Student stu = studentService.get(id);
@@ -319,14 +320,14 @@ public class MainController {
 		System.out.println("削除："+stu);
 		return "redirect:/student/delete/success";
 	}
-	
+
 	@RequestMapping("/student/delete/success")
 	public ModelAndView studentDeleteSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
 		model.addObject("username",teacher);
 		model.setViewName("studentdeletesuccess");
 		return model;
 	}
-	
+
 	@GetMapping("/subject/delete/{id}")
 	public ModelAndView subjectDelete(@PathVariable(name="id")Long id,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.addObject("username",teacher);
@@ -343,7 +344,7 @@ public class MainController {
 		System.out.println("削除："+sub);
 		return "redirect:/subject/delete/success";
 	}
-	
+
 	@RequestMapping("/subject/delete/success")
 	public ModelAndView subjectDeleteSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
 		model.addObject("username",teacher);

@@ -14,11 +14,11 @@ import ohara.ac.jp.test.model.Student;
 public class StudentDaoImpl implements StudentDao{
 	@Autowired
 	private EntityManager entityManager;
-	
+
 	public StudentDaoImpl() {
 		super();
 	}
-	
+
 	public StudentDaoImpl(EntityManager manager) {
 		this();
 		entityManager = manager;

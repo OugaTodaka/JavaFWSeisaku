@@ -18,10 +18,6 @@ INSERT INTO SUBJECT(SCHOOL_CD, CD, NAME) VALUES
 ('tes', 'A01', '国語'), ('tes', 'A02', '数学'), ('tes', 'A03', '英語'),
 ('san', 'A01', '国語'), ('san', 'A02', '数学'), ('san', 'A03', '英語');
 
-INSERT INTO TEACHER(TEACHER_ID, PASSWORD, NAME, SCHOOL_CD) VALUES
-('admin1', 'password', '管理者1', 'tes'),
-('admin2', 'password', '管理者2', 'san');
-
 INSERT INTO TEST(STUDENT_NO, SUBJECT_CD, SCHOOL_CD, NO, POINT, CLASS_NUM) VALUES
 ('2347017', 'A02', 'san', 1, 80, '202'),
 ('2347017', 'A03', 'san', 1, 95, '202'),

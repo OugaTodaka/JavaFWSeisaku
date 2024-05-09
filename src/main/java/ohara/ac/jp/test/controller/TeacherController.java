@@ -55,7 +55,7 @@ public class TeacherController {
 	    	 System.out.println("認証失敗1");
 	         return "redirect:/login?error";
 	     }
-	} 
+	}
 
 	@GetMapping("/signup")
     public String showSignupForm(Model model) {
@@ -64,7 +64,7 @@ public class TeacherController {
         model.addAttribute("school",list);
         return "signup";
     }
- 
+
     @PostMapping("/signup")
     public String signup(@ModelAttribute("teacherModel") @Validated Teacher teacher, BindingResult result) {
         // サインアップ処理を実行

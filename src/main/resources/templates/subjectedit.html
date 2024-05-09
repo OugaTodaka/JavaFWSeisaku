@@ -11,10 +11,10 @@
 	<div th:replace="sideber"></div>
 <main>
 
-<h1>データ更新</h1>
+<p><h2>データ更新</h2></p>
 <form th:object="${sub}" th:action="'/subject/edit/'+${id}" method="post">
-	<p>科目コード：<input type="text" name="cd" th:value="${sub.cd}" disabled></p>
-	<p>科　目　名：<input type="text" name="name" th:value="${sub.name}"></p>
+	<p>科目コード：<input type="text" name="cd" class="text"  th:value="${sub.cd}" disabled></p>
+	<p>科　目　名：<input type="text" name="name" class="text"  th:value="${sub.name}"></p>
 	<input type="submit" value="更新">
 </form>
 

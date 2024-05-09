@@ -3,6 +3,7 @@ package ohara.ac.jp.test.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,8 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -74,14 +77,29 @@ public class TeacherController {
         
         // 登録処理を行う
         teacherhashService.hashTeacher(teacher);
-        return "redirect:/login"; // ログインページにリダイレクト
+        return "redirect:/signup/success"; // ログインページにリダイレクト
     }
+    
+	@RequestMapping("/signup/success")
+	public ModelAndView signupSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
+		model.addObject("username",teacher);
+		model.setViewName("signupsuccess");
+		return model;
+	}
+    
     @GetMapping("/logout")
     public String logout(HttpServletRequest request, HttpServletResponse response) {
         // セキュリティコンテキストから現在の認証情報を取得し、ログアウト処理を実行
         SecurityContextLogoutHandler logoutHandler = new SecurityContextLogoutHandler();
         logoutHandler.logout(request, response, SecurityContextHolder.getContext().getAuthentication());
-        return "redirect:/login?logout"; // ログアウト後のリダイレクト先を指定
+        return "redirect:/logout/success"; // ログアウト後のリダイレクト先を指定
     }
+    
+	@RequestMapping("/logout/success")
+	public ModelAndView logoutSuccess(ModelAndView model,@AuthenticationPrincipal Teacher teacher) {
+		model.addObject("username",teacher);
+		model.setViewName("logoutsuccess");
+		return model;
+	}
 	
 }

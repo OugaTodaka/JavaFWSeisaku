@@ -48,8 +48,9 @@ public class SecurityConfig {
 				.authorizeHttpRequests(request -> {
 					request
 							.requestMatchers("/login").permitAll()     // ログインページは全許可
-							.requestMatchers("/signup").permitAll()  // 新規登録ページは全許可
-							.requestMatchers("/logout/success").permitAll()  // ログアウト完了ページは全許可
+							.requestMatchers("/signup").permitAll()// 新規登録ページは全許可
+							.requestMatchers("/signup/success").permitAll()//サインイン完了ページは全許可
+							.requestMatchers("/logout/success").permitAll()// ログアウト完了ページは全許可
 							.requestMatchers("/webjars/**").permitAll() // webjarsのパスは全許可
 							.requestMatchers("/js/**").permitAll()      // JSのstaticファイル
 							.requestMatchers("/css/**").permitAll()     // CSSのstaticファイル

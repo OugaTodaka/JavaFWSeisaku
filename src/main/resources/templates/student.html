@@ -54,8 +54,12 @@
 	</div>
 </form>
 
-<p>検索結果: <span th:text="${student.size()}"></span>件</p>
 
+<div th:if="${student.size()} == 0">
+    <span>学生情報が存在しませんでした</span>
+</div>
+<div th:if="${student.size()} != 0">
+    <p>検索結果: <span th:text="${student.size()}"></span>件</p>
 <div class="table_class">
 <table class="table" border="1">
 	<thead>
@@ -83,6 +87,7 @@
 		</tr>
 	</tbody>
 </table>
+</div>
 </div>
 </main>
 <div>

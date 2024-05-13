@@ -42,8 +42,8 @@ public class SubjectService {
 		return sub;
 	}
 	
-	public List<Subject> getbyCd(String cd) {
-		List<Subject>sub = this.subjectRepository.findByCd(cd);
+	public Subject getByCd(String cd) {
+		Subject sub = subjectRepository.findByCd(cd);
 		return sub;
 	}
 }

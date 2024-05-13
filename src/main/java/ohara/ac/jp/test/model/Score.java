@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -30,13 +32,17 @@ public class Score implements Serializable{
 	@Size(min=7,max=7)
 	private String student_no;
 	
+	@ManyToOne()
+	@JoinColumn(name="student_no",referencedColumnName="no",insertable=false,updatable=false)
+	private Student student;
+	
 	@NotBlank
 	@Column(name = "SUBJECT_CD")
 	private String subject_cd;
 	
 	@NotBlank
 	@Column(name = "SCHOOL_CD")
-	private String shool_cd;
+	private String school_cd;
 	
 	@NotBlank
 	@Column(name = "NO")

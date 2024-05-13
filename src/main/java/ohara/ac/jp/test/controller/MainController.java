@@ -17,11 +17,13 @@ import org.springframework.web.servlet.ModelAndView;
 import jakarta.servlet.http.HttpServletRequest;
 import ohara.ac.jp.test.model.ClassNum;
 import ohara.ac.jp.test.model.School;
+import ohara.ac.jp.test.model.Score;
 import ohara.ac.jp.test.model.Student;
 import ohara.ac.jp.test.model.Subject;
 import ohara.ac.jp.test.model.Teacher;
 import ohara.ac.jp.test.service.ClassNumService;
 import ohara.ac.jp.test.service.SchoolService;
+import ohara.ac.jp.test.service.ScoreService;
 import ohara.ac.jp.test.service.StudentService;
 import ohara.ac.jp.test.service.SubjectService;
 
@@ -36,6 +38,8 @@ public class MainController {
 	private SubjectService subjectService;
 	@Autowired
 	private ClassNumService classNumService;
+	@Autowired
+	private ScoreService scoreService;
 	
 
 	@RequestMapping("")
@@ -121,14 +125,13 @@ public class MainController {
 		mav.addObject("subject",subject);
 		mav.addObject("stu",scorestu);
 		mav.addObject("class",cla);
+
 		if (scorestu != null) {
 			return mav;
-
 		}else {
-
 			mav.setViewName("redirect:/score/searchfaild");
 			return mav;
-			}
+		}
 	}
 
 	@RequestMapping("/score/searchfaild")
@@ -223,16 +226,21 @@ public class MainController {
 	}
 
 	@PostMapping("/score/add/result")
-	public ModelAndView scoreAddResult(ModelAndView mav,@ModelAttribute Subject sub,@AuthenticationPrincipal Teacher teacher) {
+	public ModelAndView scoreAddResult(ModelAndView mav,@ModelAttribute Score sco,@ModelAttribute Student stu, @ModelAttribute Subject sub,@AuthenticationPrincipal Teacher teacher) {
 		mav.addObject("username",teacher);
 		List<Subject>subject =subjectService.getbySchool_cd(teacher.getSchool_cd());
 		List<ClassNum>cla = classNumService.getbySchool_cd(teacher.getSchool_cd());
-		
-		Subject choicesub = subjectService.get(sub.getId());
+		System.out.println("テスト1");
+		Subject choicesub = subjectService.getByCd(sub.getCd());
+		System.out.println(choicesub);
+		System.out.println("テスト2");
 		mav.addObject("sub",choicesub);
 		
-		List<Student>student = studentService.searchAll();
-		mav.addObject("student",student);
+		List<Score>score = scoreService.search(stu.getEnt_year(), sco.getClass_num(), sco.getSubject_cd(), sco.getNo());
+		System.out.println("テスト3");
+		mav.addObject("score",score);
+
+		System.out.println(score);
 
 		mav.addObject("subject",subject);
 		mav.addObject("class",cla);

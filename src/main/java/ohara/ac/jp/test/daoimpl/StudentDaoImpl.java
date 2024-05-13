@@ -62,5 +62,4 @@ public class StudentDaoImpl implements StudentDao{
 		if (is_attendFlg) query.setParameter("is_attend",is_attend);
 		return query.getResultList();
 	}
-
 }

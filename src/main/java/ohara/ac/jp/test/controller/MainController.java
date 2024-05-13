@@ -97,10 +97,10 @@ public class MainController {
 	}
 
 	@PostMapping("/scoresubject")
-	public ModelAndView scoresubject(@ModelAttribute Subject sub,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+	public ModelAndView scoresubject(@ModelAttribute Student stu,@ModelAttribute Score sco,@ModelAttribute Subject sub,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.setViewName("scoresubject");
 		mav.addObject("username",teacher);
-		Subject scoresub = subjectService.get(sub.getId());
+		List<Score>scoresub = scoreService.subjectSearch(stu.getEnt_year(), sco.getClass_num(), sco.getSubject_cd());
 		System.out.println(scoresub);
 		List<School>school = schoolService.searchAll();
 		List<Subject>subject = subjectService.getbySchool_cd(teacher.getSchool_cd());
@@ -109,8 +109,13 @@ public class MainController {
 		mav.addObject("subject",subject);
 		mav.addObject("sub",scoresub);
 		mav.addObject("class",cla);
-		return mav;
-	}
+
+		if (scoresub != null) {
+			return mav;
+		}else {
+			mav.setViewName("redirect:/score/searchfaild");
+			return mav;
+		}	}
 
 	@PostMapping("/scorestudent")
 	public ModelAndView scorestudent(@ModelAttribute Student stu,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {

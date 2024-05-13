@@ -183,6 +183,16 @@ footer{
 	text-align: left;
 }
 
+.table_class_mini{
+  	width: 100%;
+  	height: 40vh;
+  	margin:0 0 15px 0;
+  	overflow-y: scroll;
+}
+
+.table_class_mini td{
+	text-align: left;
+}
 .select_2 {
     position: relative;
 }

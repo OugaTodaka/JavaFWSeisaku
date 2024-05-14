@@ -40,9 +40,12 @@ public class Score implements Serializable{
 	@Column(name = "SUBJECT_CD")
 	private String subject_cd;
 	
-//	@ManyToOne()
-//	@JoinColumn(name="subject_cd",referencedColumnName="cd",insertable=false,updatable=false)
-//	private Subject subject;	
+	
+	@ManyToOne()
+	@JoinColumn(name="subject_cd" ,referencedColumnName="cd",insertable=false,updatable=false)
+	@JoinColumn(name="school_cd" ,referencedColumnName="school_cd",insertable=false,updatable=false)
+	private Subject subject;	
+	
 	
 	@NotBlank
 	@Column(name = "SCHOOL_CD")

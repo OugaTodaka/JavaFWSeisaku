@@ -73,8 +73,8 @@
 	</thead>
 	<tbody>
 		<tr th:each="student:${stu}" style="text-align:center;">
-			<td th:text="科目名"></td>
-			<td th:text="科目コード"></td>
+			<td th:text="${student.subject.name}"></td>
+			<td th:text="${student.subject_cd}"></td>
 			<td th:text="${student.no}"></td>
 			<td th:text="${student.point}"></td>
 		</tr>

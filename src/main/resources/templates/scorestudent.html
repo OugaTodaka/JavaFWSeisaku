@@ -22,7 +22,7 @@
 		<div class="flex">
 			<p>科目情報</p>
 			<div class="select_score">
-				<select name="ent_year">
+				<select name="ent_year" required>
 				<option value="">-------</option>
 				<script type="text/javascript">
 				for (i = 2015; i < 2031; i++){
@@ -32,15 +32,15 @@
 				</select>
 			</div>
 			<div class="select_score">
-				<select name="class_num">
+				<select name="class_num" required>
 					<option value="">クラスを選択</option>
 					<option th:each="class:${class}" th:inline="text" th:value="${class.class_num}">[[${class.class_num}]]</option>
 				</select>
 			</div>
 			<div class="select_score">
-				<select name="id">
+				<select name="subject_cd" required>
 				<option value="">科目を選択</option>
-				<option th:each="subject:${subject}" th:inline="text" th:value="${subject.id}">[[${subject.name}]]</option>
+				<option th:each="subject:${subject}" th:inline="text" th:value="${subject.cd}">[[${subject.name}]]</option>
 				</select>
 			</div>
 			<input type="submit" value="検索" class="submit-button"/><br><br>
@@ -65,12 +65,10 @@
 <table class="table" border="1">
 	<thead>
 		<tr>
-			<th>入学年度</th>
-			<th>クラス</th>
-			<th>学生番号</th>
-			<th>名前</th>
-			<th>1回</th>
-			<th>2回</th>
+			<th>科目</th>
+			<th>科目コード</th>
+			<th>回数</th>
+			<th>点数</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -79,8 +77,6 @@
 			<td th:text="${student.class_num}"></td>
 			<td th:text="${student.no}"></td>
 			<td th:text="${student.name}"></td>
-			<td>1回目</td>
-			<td>2回目</td>
 		</tr>
 	</tbody>
 </table>

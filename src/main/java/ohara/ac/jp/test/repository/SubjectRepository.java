@@ -11,4 +11,5 @@ import ohara.ac.jp.test.model.Subject;
 public interface SubjectRepository extends JpaRepository<Subject,Long>{
 	public List<Subject> findBySchool_cd(String school_cd);
 	public Subject findByCd(String cd);
+	public Subject findByCdAndSchool_cd(String cd,String school_cd);
 }

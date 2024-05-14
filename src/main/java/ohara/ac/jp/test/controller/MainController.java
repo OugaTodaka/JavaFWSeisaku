@@ -100,12 +100,16 @@ public class MainController {
 	public ModelAndView scoresubject(@ModelAttribute Student stu,@ModelAttribute Score sco,@ModelAttribute Subject sub,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.setViewName("scoresubject");
 		mav.addObject("username",teacher);
-		List<Score>scoresub = scoreService.subjectSearch(stu.getEnt_year(), sco.getClass_num(), sco.getSubject_cd());
+		String sub_cd = sco.getSubject_cd();
+		List<Score>scoresub = scoreService.subjectSearch(stu.getEnt_year(), sco.getClass_num(), sub_cd);
+		Subject subject = subjectService.getByCdAndSchool_cd(sub_cd,teacher.getSchool_cd());
 		System.out.println(scoresub);
+		System.out.println(subject);
 		List<School>school = schoolService.searchAll();
-		List<Subject>subject = subjectService.getbySchool_cd(teacher.getSchool_cd());
+		List<Subject>subjectlist = subjectService.getbySchool_cd(teacher.getSchool_cd());
 		List<ClassNum>cla = classNumService.getbySchool_cd(teacher.getSchool_cd());
 		mav.addObject("school",school);
+		mav.addObject("subjectlist",subjectlist);
 		mav.addObject("subject",subject);
 		mav.addObject("sub",scoresub);
 		mav.addObject("class",cla);
@@ -115,19 +119,25 @@ public class MainController {
 		}else {
 			mav.setViewName("redirect:/score/searchfaild");
 			return mav;
-		}	}
+		}
+	}
 
 	@PostMapping("/scorestudent")
 	public ModelAndView scorestudent(@ModelAttribute Student stu,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
 		mav.setViewName("scorestudent");
 		mav.addObject("username",teacher);
-		Student scorestu = studentService.getbyNo(stu.getNo());
+		String stu_no = stu.getNo();
+		List<Score> scorestu = scoreService.studentSearch(teacher.getSchool_cd(),stu_no);
+		Student student = studentService.getbyNo(stu_no);
+		System.out.println(teacher.getSchool_cd());
+		System.out.println(stu.getNo());
 		System.out.println(scorestu);
 		List<School>school = schoolService.searchAll();
 		List<Subject>subject =subjectService.getbySchool_cd(teacher.getSchool_cd());
 		List<ClassNum>cla = classNumService.getbySchool_cd(teacher.getSchool_cd());
 		mav.addObject("school",school);
 		mav.addObject("subject",subject);
+		mav.addObject("student",student);
 		mav.addObject("stu",scorestu);
 		mav.addObject("class",cla);
 

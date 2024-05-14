@@ -49,9 +49,18 @@ public class ScoreService {
 	
 	public List<Score> subjectSearch(Integer ent_year,Integer class_num,String subject_cd){
 		List<Score> result = new ArrayList<Score>();
+		System.out.println("入学年度"+ent_year);
+		System.out.println("クラス番号"+class_num);
+		System.out.println("科目コード"+subject_cd);
 		result = scoreDaoImpl.subjectSearch(ent_year, class_num, subject_cd);
 		System.out.println("科目検索");
 		return result;
-
+	}
+	
+	public List<Score> studentSearch(String school_cd,String student_no){
+		List<Score> result = new ArrayList<Score>();
+		result = scoreDaoImpl.studentSearch(school_cd,student_no);
+		System.out.println("学番検索");
+		return result;
 	}
 }

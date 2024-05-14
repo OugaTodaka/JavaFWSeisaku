@@ -40,7 +40,7 @@
 			<div class="select_score">
 				<select name="subject_cd" required>
 				<option value="">科目を選択</option>
-				<option th:each="subject:${subject}" th:inline="text" th:value="${subject.cd}">[[${subject.name}]]</option>
+				<option th:each="subject:${subjectlist}" th:inline="text" th:value="${subject.cd}">[[${subject.name}]]</option>
 				</select>
 			</div>
 			<input type="submit" value="検索" class="submit-button"/><br><br>
@@ -60,7 +60,7 @@
 	</form>
 </div>
 
-<p>科目名:</p>
+<p>科目名:<a th:text="${subject.name}"></a></p>
 <div class="table_class_mini">
 <table class="table" border="1">
 	<thead>
@@ -79,8 +79,8 @@
 			<td th:text="${score.class_num}"></td>
 			<td th:text="${score.student_no}"></td>
 			<td th:text="${score.student.name}"></td>
-			<td th:text="回数"></td>
-			<td th:text="点数"></td>
+			<td th:text="${score.no}"></td>
+			<td th:text="${score.point}"></td>
 		</tr>
 	</tbody>
 </table>

@@ -60,7 +60,7 @@
 	</form>
 </div>
 
-<p>氏名：<a th:text="${stu.name}"></a>(<a th:text="${stu.no}"></a>)</p>
+<p>氏名：<a th:text="${student.name}"></a>(<a th:text="${student.no}")></a>)</p>
 <div class="table_class_mini">
 <table class="table" border="1">
 	<thead>
@@ -73,10 +73,10 @@
 	</thead>
 	<tbody>
 		<tr th:each="student:${stu}" style="text-align:center;">
-			<td th:text="${student.ent_year}"></td>
-			<td th:text="${student.class_num}"></td>
+			<td th:text="科目名"></td>
+			<td th:text="科目コード"></td>
 			<td th:text="${student.no}"></td>
-			<td th:text="${student.name}"></td>
+			<td th:text="${student.point}"></td>
 		</tr>
 	</tbody>
 </table>

@@ -50,4 +50,16 @@ public class ScoreDaoImpl implements ScoreDao{
 		query.setParameter("subject_cd",subject_cd);
 		return query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Score> studentSearch(String school_cd,String student_no){
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT b From Score b WHERE b.school_cd = :school_cd AND b.student_no = :student_no");
+		Query query = entityManager.createQuery(sql.toString());
+		query.setParameter("school_cd",school_cd);
+		query.setParameter("student_no",student_no);
+		return query.getResultList();
+
+	}
 }

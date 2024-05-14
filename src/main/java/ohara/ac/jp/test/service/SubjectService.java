@@ -46,4 +46,9 @@ public class SubjectService {
 		Subject sub = subjectRepository.findByCd(cd);
 		return sub;
 	}
+
+	public Subject getByCdAndSchool_cd(String sub_cd, String school_cd) {
+		Subject sub = subjectRepository.findByCdAndSchool_cd(sub_cd, school_cd);
+		return sub;
+	}
 }

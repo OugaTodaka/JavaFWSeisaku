@@ -9,5 +9,6 @@ public interface ScoreDao extends Serializable{
 
 	public List<Score> search(Integer ent_year,Integer class_num,String subject_cd,Integer no);
 	public List<Score> subjectSearch(Integer ent_year,Integer class_num,String subject_cd);
+	public List<Score> studentSearch(String school_cd,String student_no);
 
 }

@@ -65,12 +65,10 @@
 <table class="table" border="1">
 	<thead>
 		<tr>
-			<th>入学年度</th>
-			<th>クラス</th>
-			<th>学生番号</th>
-			<th>名前</th>
-			<th>1回</th>
-			<th>2回</th>
+			<th>科目</th>
+			<th>科目コード</th>
+			<th>回数</th>
+			<th>点数</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -79,8 +77,6 @@
 			<td th:text="${student.class_num}"></td>
 			<td th:text="${student.no}"></td>
 			<td th:text="${student.name}"></td>
-			<td>1回目</td>
-			<td>2回目</td>
 		</tr>
 	</tbody>
 </table>

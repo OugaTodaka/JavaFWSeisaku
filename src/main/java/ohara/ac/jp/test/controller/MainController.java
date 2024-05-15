@@ -234,28 +234,47 @@ public class MainController {
 		mav.setViewName("scoreadd");
 		return mav;
 	}
+	
+	@GetMapping("/score/add/{id}")
+	public ModelAndView scoreEdit(@PathVariable(name="id")Long id,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+		Score sco = scoreService.get(id);
+		mav.setViewName("scoreedit");
+		mav.addObject("score",sco);
+		mav.addObject("username",teacher);
+		return mav;
+	}
 
-	@PostMapping("/score/add")
-	public String scoreAddRun(ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+	@PostMapping("/score/add/{id}")
+	public String scoreAddRun(@ModelAttribute Score form,@PathVariable(name="id")Long id,ModelAndView mav,@AuthenticationPrincipal Teacher teacher) {
+		Score sco = scoreService.get(id);
+		System.out.println("更新前"+sco);
+		sco.setPoint(form.getPoint());
+		
+		System.out.println("登録処理");
+		System.out.println("更新後"+sco);
+		scoreService.update(sco);
+
 		return "redirect:/score/add/success";
 	}
 
 	@PostMapping("/score/add/result")
 	public ModelAndView scoreAddResult(ModelAndView mav,@ModelAttribute Score sco,@ModelAttribute Student stu, @ModelAttribute Subject sub,@AuthenticationPrincipal Teacher teacher) {
 		mav.addObject("username",teacher);
+		String sub_cd = sub.getCd();
+		int sco_no = sco.getNo();
+		System.out.println(sub_cd);
 		List<Subject>subject =subjectService.getbySchool_cd(teacher.getSchool_cd());
 		List<ClassNum>cla = classNumService.getbySchool_cd(teacher.getSchool_cd());
 		System.out.println("テスト1");
-		Subject choicesub = subjectService.getByCd(sub.getCd());
+		Subject choicesub = subjectService.getByCdAndSchool_cd(sub_cd, teacher.getSchool_cd());
 		System.out.println(choicesub);
 		System.out.println("テスト2");
 		mav.addObject("sub",choicesub);
 		
-		List<Score>score = scoreService.search(stu.getEnt_year(), sco.getClass_num(), sco.getSubject_cd(), sco.getNo());
+		List<Score>score = scoreService.search(stu.getEnt_year(), sco.getClass_num(), sub_cd, sco_no);
 		System.out.println("テスト3");
 		mav.addObject("score",score);
-
-		System.out.println(score);
+		mav.addObject("sco",sco_no);
 
 		mav.addObject("subject",subject);
 		mav.addObject("class",cla);

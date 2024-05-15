@@ -51,7 +51,6 @@ public class Score implements Serializable{
 	@Column(name = "SCHOOL_CD")
 	private String school_cd;
 	
-	@NotBlank
 	@Column(name = "NO")
 	private int no;
 	

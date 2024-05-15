@@ -37,7 +37,7 @@
 				</select>
 			</div>
 			<div class="select_score">
-				<select name="subject_cd" required>
+				<select name="cd" required>
 				<option value="">科目を選択</option>
 				<option th:each="subject:${subject}" th:inline="text" th:value="${subject.cd}">[[${subject.name}]]</option>
 				</select>
@@ -54,9 +54,9 @@
 		
 	</div>
 </form>
-<!--<p>科目名:<a th:text="${sub.name}"></a></p>-->
+<p>科目名:<a th:text="${sub.name}"></a>(<a th:text="${sco}"></a>回目)</p>
 <div class="table_class">
-<form th:action="@{/score/add/success}" method="post">
+<!--<form th:action="@{/score/add/success}" method="post">-->
 	<table class="table" border="1">
 		<thead>
 			<tr>
@@ -64,7 +64,8 @@
 				<th>クラス</th>
 				<th>学生番号</th>
 				<th>名前</th>
-				<th>点数</th>
+				<th>得点</th>
+				<th>編集</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -73,13 +74,14 @@
 				<td th:text="${score.class_num}"></td>
 				<td th:text="${score.student_no}"></td>
 				<td th:text="${score.student.name}"></td>
-				<td><input type="text" name="point" th:value="${score.point}" class="text_score_add" maxlength="10" placeholder=""/></td>
+				<td th:text="${score.point}"></td>
+				<td><a th:href="@{/score/add/{id}(id=${score.id})}">点数登録</a></td>
 			</tr>
 		</tbody>
 	</table>
 	</div>
-	<input type="submit" value="登録して終了" class="submit-button"/>
-</form>
+<!--	<input type="submit" value="登録して終了" class="submit-button"/>-->
+<!--</form>-->
 </main>
 <div>
 	<footer th:replace="footer"></footer>

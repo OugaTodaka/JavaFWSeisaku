@@ -10,10 +10,18 @@
 	<header th:replace="header"></header>
 	<div th:replace="sideber"></div>
 <main>
-
-
-
-	<!--   ここにコンテンツ   -->
+<form th:object="${score}" th:action="'/score/add/'+${id}" method="post">
+		<table>
+		<tr>名前:<a th:text="${score.student.name}"></a></tr><br>
+		<tr>科目名:<a th:text="${score.subject.name}"></ath:text="${score.subject.name}"></tr><br>
+		<tr>
+			<label for="point">得点</label><br>
+			<input type="text" name="point" class="text" id="point" th:value="${score.point}" placeholder="0~100で得点を入力" pattern="^[0-9]+$" maxlength="3" required/>
+		</tr>
+		</table>
+		<input type="submit" value="更新" class="submit-button"/><br><br>
+		<a href="/subject">戻る</a>
+</form>
 
 
 </main>

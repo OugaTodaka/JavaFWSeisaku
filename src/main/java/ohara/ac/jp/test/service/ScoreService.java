@@ -42,6 +42,10 @@ public class ScoreService {
 	
 	public List<Score> search(Integer ent_year,Integer class_num,String subject_cd,Integer no){
 		List<Score> result = new ArrayList<Score>();
+		System.out.println(ent_year);
+		System.out.println(class_num);
+		System.out.println(subject_cd);
+		System.out.println(no);
 		result = scoreDaoImpl.search(ent_year, class_num, subject_cd, no);
 		System.out.println("表示");
 		return result;

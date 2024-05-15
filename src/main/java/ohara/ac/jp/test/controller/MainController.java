@@ -114,7 +114,7 @@ public class MainController {
 		mav.addObject("sub",scoresub);
 		mav.addObject("class",cla);
 
-		if (scoresub != null) {
+		if (scoresub.size() != 0) {
 			return mav;
 		}else {
 			mav.setViewName("redirect:/score/searchfaild");
@@ -141,7 +141,7 @@ public class MainController {
 		mav.addObject("stu",scorestu);
 		mav.addObject("class",cla);
 
-		if (scorestu != null) {
+		if (scorestu.size() != 0) {
 			return mav;
 		}else {
 			mav.setViewName("redirect:/score/searchfaild");
